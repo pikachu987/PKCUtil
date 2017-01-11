@@ -1,0 +1,6 @@
+framework module PKCUtil {
+  umbrella header "PKCUtil-umbrella.h"
+
+  export *
+  module * { export * }
+}

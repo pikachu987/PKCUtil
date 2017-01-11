@@ -1,0 +1,16 @@
+PODS:
+  - PKCUtil (0.1.0)
+
+DEPENDENCIES:
+  - PKCUtil (from `../`)
+
+EXTERNAL SOURCES:
+  PKCUtil:
+    :path: ../
+
+SPEC CHECKSUMS:
+  PKCUtil: e9e56cc2256c952962ec519afbe0fa15d917ecfe
+
+PODFILE CHECKSUM: 6ea2f65c5b750f0f5b19883ce889ca3e10fbbe3c
+
+COCOAPODS: 1.1.1
