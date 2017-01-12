@@ -26,9 +26,9 @@
 
 import UIKit
 
-open class Interactor: UIPercentDrivenInteractiveTransition {
-    var hasStarted = false
-    var shouldFinish = false
+public class Interactor: UIPercentDrivenInteractiveTransition {
+    public var hasStarted = false
+    public var shouldFinish = false
 }
 
 public enum Direction {
