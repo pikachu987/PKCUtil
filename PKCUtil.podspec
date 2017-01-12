@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = 'PKCUtil'
-s.version          = '0.1.1'
+s.version          = '0.1.2'
 s.summary          = 'Util made easy to write for each project'
 s.description      = 'I always use copy / paste for each project, so I think it would be more convenient to use library for cocoapods.'
 
