@@ -8,7 +8,21 @@
 
 import Foundation
 
-extension String {
+public extension String {
+    public var localized: String {
+        var bundle = Bundle.main
+        if Util.bundle != nil{
+            bundle = Util.bundle
+        }
+        return NSLocalizedString(self, tableName: nil, bundle: bundle, value: "", comment: "")
+    }
+    public func localizedWithComment(_ comment:String = "") -> String {
+        var bundle = Bundle.main
+        if Util.bundle != nil{
+            bundle = Util.bundle
+        }
+        return NSLocalizedString(self, tableName: nil, bundle: bundle, value: "", comment: comment)
+    }
     //substring 추가
     public func substring(from:Int = 0, to:Int = -1) -> String {
         var toTmp = to

@@ -10,13 +10,13 @@ import Foundation
 import Photos
 import AssetsLibrary
 
-enum PhotoAlbumUtilResult {
+public enum PhotoAlbumUtilResult {
     case success, error, denied
 }
 
-class PhotoAlbumUtil: NSObject {
+open class PhotoAlbumUtil: NSObject {
     
-    class func saveImageInAlbum(_ image: UIImage, albumName: String, completion: ((_ result: PhotoAlbumUtilResult) -> ())?) {
+    open static func saveImageInAlbum(_ image: UIImage, albumName: String, completion: ((_ result: PhotoAlbumUtilResult) -> ())?) {
         
         // 사진첩 폴더 생성
         var eventAlbum: PHAssetCollection?

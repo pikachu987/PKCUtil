@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIFont {
+public extension UIFont {
     static func printFontNames() {
         for familyName in UIFont.familyNames {
             print("Family name: \(familyName)")

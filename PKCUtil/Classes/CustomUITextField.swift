@@ -7,27 +7,9 @@
 //
 
 import UIKit
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
 
-fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
-}
 
-extension UITextField{
+public extension UITextField{
     func setLeftPadding(_ padding : CGFloat = 10){
         self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: self.frame.height))
         self.leftViewMode = UITextFieldViewMode.always
@@ -38,7 +20,7 @@ extension UITextField{
     }
     func maxLength(_ maxLength : Int){
         self.addAction(.editingChanged) {
-            if (self.text?.characters.count > maxLength) {
+            if ((self.text?.characters.count)! > maxLength) {
                 self.deleteBackward()
             }
         }

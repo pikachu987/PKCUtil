@@ -22,6 +22,10 @@
 		6E6770721E268F1200B0BF88 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6770651E268F1200B0BF88 /* CustomUITextField.swift */; };
 		6E6770731E268F1200B0BF88 /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6770661E268F1200B0BF88 /* CustomUIView.swift */; };
 		6E6770741E268F1200B0BF88 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6770671E268F1200B0BF88 /* Util.swift */; };
+		6EC8EDE71E272C38004DD677 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC8EDE61E272C38004DD677 /* Storage.swift */; };
+		6EC8EDEA1E272C78004DD677 /* DismissMenuAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC8EDE91E272C78004DD677 /* DismissMenuAnimator.swift */; };
+		6EC8EDEC1E272C7D004DD677 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC8EDEB1E272C7D004DD677 /* Interactor.swift */; };
+		6EC8EDEE1E272C83004DD677 /* PresentMenuAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC8EDED1E272C83004DD677 /* PresentMenuAnimator.swift */; };
 		9ECC8D04AC9518897919A479639852D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		A287312E6943A69DB5A48744A6CAA467 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		CB2945B014DF25CF474035B01AF76FAD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
@@ -65,6 +69,10 @@
 		6E6770651E268F1200B0BF88 /* CustomUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUITextField.swift; sourceTree = "<group>"; };
 		6E6770661E268F1200B0BF88 /* CustomUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
 		6E6770671E268F1200B0BF88 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		6EC8EDE61E272C38004DD677 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		6EC8EDE91E272C78004DD677 /* DismissMenuAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissMenuAnimator.swift; sourceTree = "<group>"; };
+		6EC8EDEB1E272C7D004DD677 /* Interactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
+		6EC8EDED1E272C83004DD677 /* PresentMenuAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentMenuAnimator.swift; sourceTree = "<group>"; };
 		7AADFBB196FE0983BCD2A7E1B59CE73A /* PKCUtil-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PKCUtil-prefix.pch"; sourceTree = "<group>"; };
 		81234A6DA06DF657FB26F757E6AF11B3 /* Pods-PKCUtil_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PKCUtil_Example.release.xcconfig"; sourceTree = "<group>"; };
 		880917A1299CEAE472FCC35FF4CAC1BD /* Pods-PKCUtil_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PKCUtil_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -117,18 +125,10 @@
 		01539D297068D4A1EA6F6A520E0B59A0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				6E67705C1E268F1200B0BF88 /* CustomNSDate.swift */,
-				6E67705D1E268F1200B0BF88 /* CustomPhotoAlbum.swift */,
-				6E67705E1E268F1200B0BF88 /* CustomString.swift */,
-				6E67705F1E268F1200B0BF88 /* CustomUIColor.swift */,
-				6E6770601E268F1200B0BF88 /* CustomUIControl.swift */,
-				6E6770611E268F1200B0BF88 /* CustomUIFont.swift */,
-				6E6770621E268F1200B0BF88 /* CustomUIImage.swift */,
-				6E6770631E268F1200B0BF88 /* CustomUIImageView.swift */,
-				6E6770641E268F1200B0BF88 /* CustomUIScrollView.swift */,
-				6E6770651E268F1200B0BF88 /* CustomUITextField.swift */,
-				6E6770661E268F1200B0BF88 /* CustomUIView.swift */,
-				6E6770671E268F1200B0BF88 /* Util.swift */,
+				6EC8EDE81E272C6B004DD677 /* Slide */,
+				6EC8EDE51E272BE9004DD677 /* Save */,
+				6EC8EDE41E272BE3004DD677 /* Util */,
+				6EC8EDE31E272BD5004DD677 /* Custom */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -199,6 +199,50 @@
 			);
 			name = PKCUtil;
 			path = ../..;
+			sourceTree = "<group>";
+		};
+		6EC8EDE31E272BD5004DD677 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				6E67705C1E268F1200B0BF88 /* CustomNSDate.swift */,
+				6E67705D1E268F1200B0BF88 /* CustomPhotoAlbum.swift */,
+				6E67705E1E268F1200B0BF88 /* CustomString.swift */,
+				6E67705F1E268F1200B0BF88 /* CustomUIColor.swift */,
+				6E6770601E268F1200B0BF88 /* CustomUIControl.swift */,
+				6E6770611E268F1200B0BF88 /* CustomUIFont.swift */,
+				6E6770621E268F1200B0BF88 /* CustomUIImage.swift */,
+				6E6770631E268F1200B0BF88 /* CustomUIImageView.swift */,
+				6E6770641E268F1200B0BF88 /* CustomUIScrollView.swift */,
+				6E6770651E268F1200B0BF88 /* CustomUITextField.swift */,
+				6E6770661E268F1200B0BF88 /* CustomUIView.swift */,
+			);
+			name = Custom;
+			sourceTree = "<group>";
+		};
+		6EC8EDE41E272BE3004DD677 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				6E6770671E268F1200B0BF88 /* Util.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		6EC8EDE51E272BE9004DD677 /* Save */ = {
+			isa = PBXGroup;
+			children = (
+				6EC8EDE61E272C38004DD677 /* Storage.swift */,
+			);
+			name = Save;
+			sourceTree = "<group>";
+		};
+		6EC8EDE81E272C6B004DD677 /* Slide */ = {
+			isa = PBXGroup;
+			children = (
+				6EC8EDE91E272C78004DD677 /* DismissMenuAnimator.swift */,
+				6EC8EDED1E272C83004DD677 /* PresentMenuAnimator.swift */,
+				6EC8EDEB1E272C7D004DD677 /* Interactor.swift */,
+			);
+			name = Slide;
 			sourceTree = "<group>";
 		};
 		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
@@ -395,10 +439,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E67706F1E268F1200B0BF88 /* CustomUIImage.swift in Sources */,
+				6EC8EDE71E272C38004DD677 /* Storage.swift in Sources */,
 				6E6770701E268F1200B0BF88 /* CustomUIImageView.swift in Sources */,
 				6E67706B1E268F1200B0BF88 /* CustomString.swift in Sources */,
 				6E6770691E268F1200B0BF88 /* CustomNSDate.swift in Sources */,
+				6EC8EDEE1E272C83004DD677 /* PresentMenuAnimator.swift in Sources */,
 				6E6770721E268F1200B0BF88 /* CustomUITextField.swift in Sources */,
+				6EC8EDEC1E272C7D004DD677 /* Interactor.swift in Sources */,
+				6EC8EDEA1E272C78004DD677 /* DismissMenuAnimator.swift in Sources */,
 				6E6770731E268F1200B0BF88 /* CustomUIView.swift in Sources */,
 				0B5FDAA3EBB31F6E94362FBB7D8BCD14 /* PKCUtil-dummy.m in Sources */,
 				6E67706C1E268F1200B0BF88 /* CustomUIColor.swift in Sources */,

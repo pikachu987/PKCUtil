@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIView {
+public extension UIView {
     
     func addDashedBorder(_ color : UIColor, lineWidth : CGFloat!, dashPattern : [NSNumber], cornerRadius : CGFloat) {
         let shapeLayer:CAShapeLayer = CAShapeLayer()
@@ -43,7 +43,7 @@ extension UIView {
 }
 
 
-@IBDesignable extension UIView {
+@IBDesignable public extension UIView {
     @IBInspectable var borderColor:UIColor? {
         set {
             layer.borderColor = newValue!.cgColor

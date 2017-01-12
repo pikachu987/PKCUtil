@@ -9,7 +9,7 @@
 import Foundation
 
 
-extension Date{
+public extension Date{
     func yearInt(_ calendar : Calendar = Calendar.current) -> Int{
         let components = (calendar as NSCalendar).components(.year, from: self)
         let year = components.year

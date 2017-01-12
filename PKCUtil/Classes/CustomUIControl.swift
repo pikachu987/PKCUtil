@@ -34,7 +34,7 @@ class ActionSingleton {
     }
 }
 
-extension UIControl{
+public extension UIControl{
     func addAction(_ type: UIControlEvents, action: @escaping ((Void) -> Void)){
         let actionSingleton = ActionSingleton.sharedInstance
         if type == .allEvents{
