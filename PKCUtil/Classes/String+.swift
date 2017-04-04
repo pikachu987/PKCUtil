@@ -41,7 +41,7 @@ public extension String {
         return value
     }
     
-    public func JSONStringify() -> AnyObject{
+    public func parseJSON() -> AnyObject{
         guard let data = (self).data(using: String.Encoding.utf8) else{
             return "" as AnyObject
         }
