@@ -50,13 +50,13 @@ public extension UITextField{
 
 
 
-public extension UITextField{
-    @IBInspectable var placeHolderColor: UIColor? {
-        get {
-            return self.placeHolderColor
-        }
-        set {
-            self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "", attributes:[NSForegroundColorAttributeName: newValue!])
-        }
-    }
-}
+//public extension UITextField{
+//    @IBInspectable var placeHolderColor: UIColor? {
+//        get {
+//            return self.placeHolderColor
+//        }
+//        set {
+//            self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "", attributes:[NSForegroundColorAttributeName: newValue!])
+//        }
+//    }
+//}
