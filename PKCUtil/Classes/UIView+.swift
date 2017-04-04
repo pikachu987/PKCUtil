@@ -10,7 +10,7 @@ import UIKit
 
 public extension UIView {
     
-    func addDashedBorder(_ color : UIColor, lineWidth : CGFloat!, dashPattern : [NSNumber], cornerRadius : CGFloat) {
+    public func addDashedBorder(_ color : UIColor, lineWidth : CGFloat!, dashPattern : [NSNumber], cornerRadius : CGFloat) {
         let shapeLayer:CAShapeLayer = CAShapeLayer()
         let frameSize = self.frame.size
         let shapeRect = CGRect(x: 0, y: 0, width: frameSize.width, height: frameSize.height)
@@ -24,7 +24,7 @@ public extension UIView {
         shapeLayer.path = UIBezierPath(roundedRect: shapeRect, cornerRadius: cornerRadius).cgPath
         self.layer.addSublayer(shapeLayer)
     }
-    func layer(_ rect: UIRectEdge = .bottom, borderWidth : CGFloat = 1, color : UIColor = UIColor.black, border : CALayer = CALayer()) -> CALayer{
+    public func layer(_ rect: UIRectEdge = .bottom, borderWidth : CGFloat = 1, color : UIColor = UIColor.black, border : CALayer = CALayer()) -> CALayer{
         border.borderColor = color.cgColor
         border.borderWidth = borderWidth
         self.layer.addSublayer(border)

@@ -9,7 +9,7 @@
 import UIKit
 
 public extension UIImageView{
-    func frameForImageInImageViewAspectFit() -> CGRect{
+    public func frameForImageInImageViewAspectFit() -> CGRect{
         if  let img = self.image {
             let imageRatio = img.size.width / img.size.height
             let viewRatio = self.frame.size.width / self.frame.size.height

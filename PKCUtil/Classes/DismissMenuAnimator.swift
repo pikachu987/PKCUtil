@@ -27,7 +27,7 @@
 import UIKit
 
 open class DismissMenuAnimator : NSObject, UIViewControllerAnimatedTransitioning {
-    open var snapshotNumber: Int!
+    open var snapshotNumber: Int! = 0
     required public init(snapshotNumber: Int) {
         super.init()
         self.snapshotNumber = snapshotNumber

@@ -9,16 +9,16 @@
 import UIKit
 
 public extension UIImage {
-    func imageWithView(_ view: UIView) -> UIImage {
+    public func imageWithView(_ view: UIView) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.isOpaque, 0.0)
         view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
         let img = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return img!
+        return img
     }
-    public func imageRotatedByDegrees(_ degrees: CGFloat, flip: Bool) -> UIImage {
+    public func imageRotatedByDegrees(_ degrees: CGFloat, flip: Bool) -> UIImage? {
         let degreesToRadians: (CGFloat) -> CGFloat = {
-            return $0 / 180.0 * CGFloat(M_PI)
+            return $0 / 180.0 * CGFloat(Double.pi)
         }
         // calculate the size of the rotated view's containing box for our drawing space
         let rotatedViewBox = UIView(frame: CGRect(origin: CGPoint.zero, size: size))
@@ -42,16 +42,42 @@ public extension UIImage {
         }
         
         bitmap?.scaleBy(x: yFlip, y: -1.0)
-        bitmap?.draw(cgImage!, in: CGRect(x: -size.width / 2, y: -size.height / 2, width: size.width, height: size.height))
+        guard let cgImg = self.cgImage else{
+            return nil
+        }
+        bitmap?.draw(cgImg, in: CGRect(x: -size.width / 2, y: -size.height / 2, width: size.width, height: size.height))
         
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return newImage!
+        return newImage
     }
     
+    public func resize(_ size: CGSize) -> UIImage?{
+        let hasAlpha = true
+        let scale: CGFloat = 0.0 // Use scale factor of main screen
+        UIGraphicsBeginImageContextWithOptions(size, !hasAlpha, scale)
+        self.draw(in: CGRect(origin: CGPoint.zero, size: size))
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        return scaledImage
+    }
     
-    func crop(to:CGSize) -> UIImage {
+    public func rePercentage(withPercentage percentage: CGFloat) -> UIImage? {
+        let canvasSize = CGSize(width: size.width * percentage, height: size.height * percentage)
+        UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
+        defer { UIGraphicsEndImageContext() }
+        draw(in: CGRect(origin: .zero, size: canvasSize))
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+    public func resizedPercentage(toWidth width: CGFloat) -> UIImage? {
+        let canvasSize = CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))
+        UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
+        defer { UIGraphicsEndImageContext() }
+        draw(in: CGRect(origin: .zero, size: canvasSize))
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+    
+    public func crop(to:CGSize) -> UIImage? {
         guard let cgimage = self.cgImage else { return self }
         let contextImage: UIImage = UIImage(cgImage: cgimage)
         let contextSize: CGSize = contextImage.size
@@ -92,11 +118,11 @@ public extension UIImage {
         cropped.draw(in: CGRect(x: 0, y: 0, width: to.width, height: to.height))
         let resized = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return resized!
+        return resized
     }
     
     
-    func getPixelColor(pos: CGPoint) -> UIColor {
+    public func getPixelColor(pos: CGPoint) -> UIColor {
         
         let pixelData = self.cgImage!.dataProvider!.data
         let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
@@ -109,5 +135,45 @@ public extension UIImage {
         let a = CGFloat(data[pixelInfo+3]) / CGFloat(255.0)
         
         return UIColor(red: r, green: g, blue: b, alpha: a)
+    }
+    
+    
+    
+    
+    //이미지 데이터로 바꾸기
+    public func returnImageData(_ ext : ExtType) -> Data{
+        var data : Data = Data()
+        switch ext {
+        case .jpeg:
+            if let tmpData = UIImageJPEGRepresentation(self, 0.5){
+                data = tmpData
+            }
+            break
+        case .png:
+            if let tmpData = UIImagePNGRepresentation(self){
+                data = tmpData
+            }
+            break
+        }
+        return data
+    }
+    
+    
+    
+    public func resizedImage(size: CGFloat = 1000, percent: CGFloat = 0.15, handler: @escaping ((UIImage) -> Void)){
+        var width: CGFloat = 0
+        var height: CGFloat = 0
+        if self.size.width > self.size.height{
+            width = size
+            height = width*self.size.height/self.size.width
+        }else{
+            height = size
+            width = height*self.size.width/self.size.height
+        }
+        DispatchQueue.global().async {
+            if let image = self.resize(CGSize(width: width, height: height))?.rePercentage(withPercentage: percent){
+                handler(image)
+            }
+        }
     }
 }
