@@ -9,32 +9,33 @@
 import Foundation
 import UIKit
 
+
+//extension UIDevice{
+//    public var modelName: String {
+//        var systemInfo = utsname()
+//        _ = uname(&systemInfo)
+//        let machineString = Mirror(reflecting: systemInfo.machine).children.reduce("") { identifier, element in
+//            guard let value = element.value as? Int8, value != 0 else { return identifier }
+//            return identifier + String(UnicodeScalar(UInt8(value)))
+//        }
+//        return self.modelName(machineString: machineString)
+//    }
+//}
+
 public extension UIDevice {
-    public var modelName: String {
+    public func modelName(machineString: String) -> String{
         #if (arch(i386) || arch(x86_64)) && os(iOS)
-            let DEVICE_IS_SIMULATOR = true
-        #else
-            let DEVICE_IS_SIMULATOR = false
-        #endif
-        
-        var machineString : String = ""
-        
-        if DEVICE_IS_SIMULATOR == true
-        {
-            
             if let dir = ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] {
-                machineString = dir
+                return self.getMachineString(dir)
+            }else{
+                return ""
             }
-        }
-        else {
-            var systemInfo = utsname()
-            _ = uname(&systemInfo)
-            let machineMirror = Mirror(reflecting: systemInfo.machine)
-            machineString = machineMirror.children.reduce("") { identifier, element in
-                guard let value = element.value as? Int8, value != 0 else { return identifier }
-                return identifier + String(UnicodeScalar(UInt8(value)))
-            }
-        }
+        #else
+            return self.getMachineString(machineString)
+        #endif
+    }
+    
+    func getMachineString(_ machineString: String) -> String{
         switch machineString {
         case "iPod5,1":                                 return "iPod Touch 5"
         case "iPod7,1":                                 return "iPod Touch 6"
