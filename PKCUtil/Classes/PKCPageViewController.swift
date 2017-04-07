@@ -25,7 +25,7 @@ public class PKCPageViewController: UIPageViewController{
         }
     }
     
-    func initView(_ vc: [UIViewController]){
+    public func initView(_ vc: [UIViewController]){
         self.orderedViewControllers = vc
         if let initialViewController = self.orderedViewControllers.first {
             scrollToViewController(initialViewController)
