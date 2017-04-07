@@ -40,7 +40,7 @@ public class PKCPageViewController: UIPageViewController{
         }
     }
     
-    func scrollToViewController(index newIndex: Int) {
+    public func scrollToViewController(index newIndex: Int) {
         if let firstViewController = viewControllers?.first,
             let currentIndex = orderedViewControllers.index(of: firstViewController) {
             let direction: UIPageViewControllerNavigationDirection = newIndex >= currentIndex ? .forward : .reverse
