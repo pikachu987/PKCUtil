@@ -21,4 +21,12 @@ public extension Int {
             return "0"
         }
     }
+    
+    public func setTimeDate() -> String{
+        if self < 10{
+            return "0\(self)"
+        }else{
+            return "\(self)"
+        }
+    }
 }

@@ -101,7 +101,7 @@ public extension Date{
         let calendar = Calendar.current
         return (year(calendar), month(calendar), day(calendar), hour(calendar), minute(calendar), second(calendar))
     }
-    
+    //날짜 사이 구하기
     public func daysBetweenDate(toDate: Date) -> Int {
         let components = Calendar.current.dateComponents([.day], from: self, to: toDate)
         return components.day ?? 0

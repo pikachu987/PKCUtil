@@ -9,6 +9,17 @@
 import UIKit
 
 public extension UIImage {
+    //이미지 컬러 바꾸기
+    public func imageWithColor(color: UIColor, size: CGSize) -> UIImage{
+        let rect: CGRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        color.setFill()
+        UIRectFill(rect)
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return image
+    }
+    
     public func imageWithView(_ view: UIView) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.isOpaque, 0.0)
         view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
@@ -77,6 +88,8 @@ public extension UIImage {
         return UIGraphicsGetImageFromCurrentImageContext()
     }
     
+    
+    //자르기
     public func crop(to:CGSize) -> UIImage? {
         guard let cgimage = self.cgImage else { return self }
         let contextImage: UIImage = UIImage(cgImage: cgimage)
@@ -122,6 +135,7 @@ public extension UIImage {
     }
     
     
+    //이미지 평균 컬러
     public func getPixelColor(pos: CGPoint) -> UIColor {
         
         let pixelData = self.cgImage!.dataProvider!.data
@@ -159,7 +173,7 @@ public extension UIImage {
     }
     
     
-    
+    //이미지 리사이즈
     public func resizedImage(size: CGFloat = 1000, percent: CGFloat = 0.15, handler: @escaping ((UIImage) -> Void)){
         var width: CGFloat = 0
         var height: CGFloat = 0
