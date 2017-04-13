@@ -15,14 +15,14 @@ import UIKit
 
 public class PKCPageViewController: UIPageViewController{
     weak public var pageViewDelegate: PKCPageViewControllerDelegate?
-    public var isDataSource = false
     public lazy var orderedViewControllers: [UIViewController] = [UIViewController]()
     public override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
-        if self.isDataSource{
-            self.dataSource = self
-        }
+    }
+    
+    public func setDataSource(){
+        self.dataSource = self
     }
     
     public func initView(_ vc: [UIViewController]){
@@ -108,4 +108,3 @@ extension PKCPageViewController: UIPageViewControllerDataSource {
         return orderedViewControllers[nextIndex]
     }
 }
-

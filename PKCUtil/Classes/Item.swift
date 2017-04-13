@@ -6,11 +6,11 @@
 //
 //
 
-import Foundation
+//import Foundation
 //import SwiftyJSON
 
 
-class Item {
+//class Item {
 //    static func value(ofString: Any?) -> String{
 //        if let json = ofString as? JSON{
 //            if let value = json.string{
@@ -37,11 +37,11 @@ class Item {
 //        }
 //        return ""
 //    }
-//    
-//    
-//    
-//    
-//    
+//
+//
+//
+//
+//
 //    static func value(ofInt: Any?) -> Int{
 //        if let json = ofInt as? JSON{
 //            if let str = json.string, let value = Int(str){
@@ -64,10 +64,10 @@ class Item {
 //        }
 //        return 0
 //    }
-//    
-//    
-//    
-//    
+//
+//
+//
+//
 //    static func value(ofFloat: Any?) -> Float{
 //        if let json = ofFloat as? JSON{
 //            if let str = json.string, let value = Float(str){
@@ -90,10 +90,10 @@ class Item {
 //        }
 //        return 0
 //    }
-//    
-//    
-//    
-//    
+//
+//
+//
+//
 //    static func value(ofDouble: Any?) -> Double{
 //        if let json = ofDouble as? JSON{
 //            if let str = json.string, let value = Double(str){
@@ -116,10 +116,10 @@ class Item {
 //        }
 //        return 0
 //    }
-//    
-//    
-//    
-//    
+//
+//
+//
+//
 //    static func value(ofDate: Any?) -> Date{
 //        if let json = ofDate as? JSON{
 //            if let str = json.string, let value = Double(str){
@@ -142,4 +142,4 @@ class Item {
 //        }
 //        return Date()
 //    }
-}
+//}
