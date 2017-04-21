@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 
 public extension UIColor {
+    static func color(_ color: CGFloat) -> UIColor{
+        return UIColor(red: color/255, green: color/255, blue: color/255, alpha: 1)
+    }
+    
     convenience init(red: Int, green: Int, blue: Int) {
         assert(red >= 0 && red <= 255, "Invalid red component")
         assert(green >= 0 && green <= 255, "Invalid green component")
