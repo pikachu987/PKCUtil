@@ -10,13 +10,13 @@ import UIKit
 
 public extension UIView {
     //오토레이아웃
-    func addSubview(_ nibName: String, owner: UIViewController) -> UIView{
+    public func addSubview(_ nibName: String, owner: UIViewController) -> UIView{
         let view = Bundle.main.loadNibNamed(nibName, owner: owner, options: nil)?.first as! UIView
         view.addFullConstraints(self)
         return view
     }
     
-    func addFullConstraints(_ superView: UIView){
+    public func addFullConstraints(_ superView: UIView){
         self.translatesAutoresizingMaskIntoConstraints = false
         superView.addSubview(self)
         let view_constraint_H = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": self])
@@ -25,7 +25,7 @@ public extension UIView {
         superView.addConstraints(view_constraint_V)
     }
     
-    func setBorder(_ color: UIColor, width: CGFloat, radius: CGFloat){
+    public func setBorder(_ color: UIColor, width: CGFloat, radius: CGFloat){
         self.layer.borderColor = color.cgColor
         self.layer.borderWidth = width
         self.layer.cornerRadius = radius
