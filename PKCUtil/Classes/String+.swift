@@ -118,11 +118,11 @@ public extension String {
         return result
     }
     
-    public func isContains(_ string: String) -> Bool{
+    public func isContains(_ string: String, noneSearch: Bool = true) -> Bool{
         if string.characters.count == 1 && string.makeInitail() == ""{
             return PKCUtil.isValidateKorean(string) ? self.makeInitail().contains(string) : self.contains(string)
         }else{
-            return self.contains(string)
+            return string.characters.count == 0 ? noneSearch : self.contains(string)
         }
     }
 }
