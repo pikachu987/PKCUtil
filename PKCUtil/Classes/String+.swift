@@ -9,6 +9,17 @@
 import Foundation
 
 public extension String {
+    public var koreanInitialDict: [String: String]{
+        guard let plist = Bundle(for: PKCUtil.self).path(forResource: "KoreanInitial", ofType: "plist") else {
+            return [:]
+        }
+        guard let dict = NSDictionary(contentsOfFile: plist) as? [String: String] else {
+            return [:]
+        }
+        return dict
+    }
+    
+    
     public var localized: String {
         return NSLocalizedString(self, tableName: nil, bundle: Bundle.main, value: "", comment: "")
     }
@@ -79,4 +90,39 @@ public extension String {
     }
     
     
+    
+    
+    
+    //Initial Auto Complete
+    public func makeInitail() -> String{
+        var out = ""
+        for (index, _) in self.characters.enumerated() {
+            let oneChar: UniChar = NSString(string: self).character(at: index)
+            if (oneChar >= 0xAC00 && oneChar <= 0xD7A3){
+                let value = ((oneChar - 0xAC00)/28)/21 + 0x1100
+                self.koreanInitialDict.keys.forEach({ (key) in
+                    out = "\(out)\(self.compareInitialKey(value, key: key))"
+                })
+            }
+        }
+        return out
+    }
+    
+    private func compareInitialKey(_ value: UInt16, key: String) -> String{
+        var result = ""
+        if value == UInt16(key) {
+            if let value = self.koreanInitialDict[key]{
+                result = "\(value)"
+            }
+        }
+        return result
+    }
+    
+    public func isContains(_ string: String) -> Bool{
+        if string.characters.count == 1 && string.makeInitail() == ""{
+            return PKCUtil.isValidateKorean(string) ? self.makeInitail().contains(string) : self.contains(string)
+        }else{
+            return self.contains(string)
+        }
+    }
 }

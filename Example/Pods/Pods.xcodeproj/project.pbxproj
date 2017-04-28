@@ -67,6 +67,7 @@
 		47DDAC80CC05DBB603EB9B897B94570A /* Pods-PKCUtil_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PKCUtil_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		52C23C1BDEC0B72D12DF6DCC2DB22553 /* PKCUtil.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = PKCUtil.modulemap; sourceTree = "<group>"; };
 		6DFF723D7209A01FE70E78B4382FC16B /* Pods-PKCUtil_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PKCUtil_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		6E17EC8B1EB318BE00CC963B /* KoreanInitial.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KoreanInitial.plist; sourceTree = "<group>"; };
 		6E2848041E9746E7005436C1 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		6E67705C1E268F1200B0BF88 /* Date+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		6E67705E1E268F1200B0BF88 /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
@@ -245,6 +246,7 @@
 				6E6B16661E8EB1E800F71511 /* UIController+.swift */,
 				6E2848041E9746E7005436C1 /* Item.swift */,
 				6EAEE2C81EA9DF20005C62E9 /* UITextView+.swift */,
+				6E17EC8B1EB318BE00CC963B /* KoreanInitial.plist */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
