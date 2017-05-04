@@ -9,6 +9,7 @@
 import Foundation
 
 public extension String {
+    //초성 자동완성을 위해 .plist가져오기
     public var koreanInitialDict: [String: String]{
         guard let plist = Bundle(for: PKCUtil.self).path(forResource: "KoreanInitial", ofType: "plist") else {
             return [:]
@@ -20,12 +21,18 @@ public extension String {
     }
     
     
+    //로컬라이즈
     public var localized: String {
         return NSLocalizedString(self, tableName: nil, bundle: Bundle.main, value: "", comment: "")
     }
+    
+    
+    //로컬라이즈
     public func localizedWithComment(_ comment:String = "") -> String {
         return NSLocalizedString(self, tableName: nil, bundle: Bundle.main, value: "", comment: comment)
     }
+    
+    
     //substring 추가
     public func substring(from:Int = 0, to:Int = -1) -> String {
         var toTmp = to
@@ -36,6 +43,8 @@ public extension String {
         let range = self.characters.index(self.startIndex, offsetBy: from)..<self.characters.index(self.startIndex, offsetBy: toTmp+1)
         return self.substring(with: range)
     }
+    
+    //substring
     public func substring(from:Int = 0, length:Int) -> String {
         let range = self.characters.index(self.startIndex, offsetBy: from)..<self.characters.index(self.startIndex, offsetBy: from+length)
         return self.substring(with: range)
@@ -45,6 +54,9 @@ public extension String {
         let range = self.characters.index(self.startIndex, offsetBy: 0)..<self.characters.index(self.startIndex, offsetBy: self.characters.count-1)
         return range
     }
+    
+    
+    //url을 쿼리로 인코딩하기(특수문자를 등을 인코딩)
     public func queryValue() -> String{
         guard let value = self.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else{
             return ""
@@ -52,6 +64,8 @@ public extension String {
         return value
     }
     
+    
+    //json형으로 되어있는 스트링을 JSON으로 만들기
     public func parseJSON() -> AnyObject{
         guard let data = (self).data(using: String.Encoding.utf8) else{
             return "" as AnyObject
@@ -93,7 +107,7 @@ public extension String {
     
     
     
-    //Initial Auto Complete
+    //Initial Auto Complete 초성 자동완성
     public func makeInitail() -> String{
         var out = ""
         for (index, _) in self.characters.enumerated() {
@@ -118,6 +132,8 @@ public extension String {
         return result
     }
     
+    
+    //초성 자동완성 글자 비교하기
     public func isContains(_ string: String, noneSearch: Bool = true) -> Bool{
         if string.characters.count == 1 && string.makeInitail() == ""{
             return PKCUtil.isValidateKorean(string) ? self.makeInitail().contains(string) : self.contains(string)

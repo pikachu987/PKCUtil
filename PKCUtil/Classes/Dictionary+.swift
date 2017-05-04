@@ -9,7 +9,9 @@
 import Foundation
 
 public extension Dictionary{
-    public func JSONStringify(prettyPrinted:Bool = false) -> String{
+    
+    //json형태를 string으로 만듬
+    public func JSONStringify(_ prettyPrinted:Bool = false) -> String{
         let options = prettyPrinted ? JSONSerialization.WritingOptions.prettyPrinted : JSONSerialization.WritingOptions(rawValue: 0)
         if JSONSerialization.isValidJSONObject(self) {
             do{

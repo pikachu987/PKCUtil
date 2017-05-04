@@ -22,6 +22,8 @@ import UIKit
 //    }
 //}
 
+
+//device 모델명 출력
 public extension UIDevice {
     public func modelName(machineString: String) -> String{
         #if (arch(i386) || arch(x86_64)) && os(iOS)

@@ -6,13 +6,10 @@
 //  Copyright © 2016년 guanho. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-public enum ExtType{
-    case jpeg, png
-}
 open class PKCUtil{
+    //언어
     open static var language : String{
         if let value = (Locale.current as NSLocale).object(forKey: NSLocale.Key.languageCode) as? String{
             return value
@@ -20,6 +17,8 @@ open class PKCUtil{
             return "en"
         }
     }
+    
+    //지역
     open static var locale : String{
         if let value = (Locale.current as NSLocale).object(forKey: NSLocale.Key.countryCode) as? String{
             return value
@@ -27,6 +26,8 @@ open class PKCUtil{
             return "US"
         }
     }
+    
+    //현재 버전
     open static var nsVersion : String{
         if let value = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String{
             return value
@@ -34,6 +35,8 @@ open class PKCUtil{
             return "1.0"
         }
     }
+    
+    //디바이스 uuid
     open static var deviceId : String{
         if let value = UIDevice.current.identifierForVendor?.uuidString{
             return value
@@ -42,9 +45,10 @@ open class PKCUtil{
         }
     }
     
-    open static func initWindow(_ bundle: Bundle, window: UIWindow?){
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: bundle)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "ViewController")
+    //윈도우 초기화
+    open static func initWindow(_ bundle: Bundle, window: UIWindow?, storyboardName: String = "Main", identifier: String = "ViewController"){
+        let storyBoard : UIStoryboard = UIStoryboard(name: storyboardName, bundle: bundle)
+        let vc = storyBoard.instantiateViewController(withIdentifier: identifier)
         window?.rootViewController?.dismiss(animated: false, completion: nil)
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
@@ -52,24 +56,28 @@ open class PKCUtil{
     
     
     // MARK: Reg
+    
+    //이메일
     open static func isValidEmail(_ string: String) -> Bool {
         let regEx = "^(?:(?:(?:(?: )*(?:(?:(?:\\t| )*\\r\\n)?(?:\\t| )+))+(?: )*)|(?: )+)?(?:(?:(?:[-A-Za-z0-9!#$%&’*+/=?^_'{|}~]+(?:\\.[-A-Za-z0-9!#$%&’*+/=?^_'{|}~]+)*)|(?:\"(?:(?:(?:(?: )*(?:(?:[!#-Z^-~]|\\[|\\])|(?:\\\\(?:\\t|[ -~]))))+(?: )*)|(?: )+)\"))(?:@)(?:(?:(?:[A-Za-z0-9](?:[-A-Za-z0-9]{0,61}[A-Za-z0-9])?)(?:\\.[A-Za-z0-9](?:[-A-Za-z0-9]{0,61}[A-Za-z0-9])?)*)|(?:\\[(?:(?:(?:(?:(?:[0-9]|(?:[1-9][0-9])|(?:1[0-9][0-9])|(?:2[0-4][0-9])|(?:25[0-5]))\\.){3}(?:[0-9]|(?:[1-9][0-9])|(?:1[0-9][0-9])|(?:2[0-4][0-9])|(?:25[0-5]))))|(?:(?:(?: )*[!-Z^-~])*(?: )*)|(?:[Vv][0-9A-Fa-f]+\\.[-A-Za-z0-9._~!$&'()*+,;=:]+))\\])))(?:(?:(?:(?: )*(?:(?:(?:\\t| )*\\r\\n)?(?:\\t| )+))+(?: )*)|(?: )+)?$"
         let emailTest = NSPredicate(format:"SELF MATCHES %@", regEx)
         return emailTest.evaluate(with: string)
     }
     
+    //페이지
     open static func isValidateUrl (_ string: String) -> Bool {
         let regEx = "((?:http|https)://)?(?:www\\.)?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?(/(?<=/)(?:[\\w\\d\\-./_]+)?)?"
         return NSPredicate(format: "SELF MATCHES %@", regEx).evaluate(with: string)
     }
     
+    //한글인지
     open static func isValidateKorean(_ string: String) -> Bool{
         let regEx = ".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*"
         return NSPredicate(format: "SELF MATCHES %@", regEx).evaluate(with: string)
     }
     
     
-    
+    //기본 브라우져로 열기
     open static func openUrlPath(_ path: String?){
         guard let urlPath = path, let url = URL(string: urlPath) else {
             return
@@ -77,7 +85,7 @@ open class PKCUtil{
         self.openUrl(url)
     }
     
-    
+    //기본 브라우져로 열기
     open static func openUrl(_ url: URL){
         if #available(iOS 8.0, *) {
             UIApplication.shared.openURL(url)
@@ -87,9 +95,7 @@ open class PKCUtil{
     }
     
     
-    
-    
-    
+    //데이터 가져오기
     open static func sessionDataTask(_ path: String, handler: @escaping ((Data) -> Void)){
         if let url = URL(string: path){
             URLSession(configuration: .default).dataTask(with: url) { (data, response, error) in
@@ -105,7 +111,7 @@ open class PKCUtil{
     }
     
     
-    
+    //좌표로 거리 계산
     open static func getBetweenDistance(latitude : Double, longitude: Double, currentLatitude: Double, currentLongitude: Double) -> String{
         let currentRadiansX = (currentLatitude*Double.pi)/180
         let currentRadiansY = (currentLongitude*Double.pi)/180

@@ -9,13 +9,24 @@
 import UIKit
 
 public extension UIView {
-    //오토레이아웃
+    //해당 뷰를 이미지로 만들기
+    public func imageWithView() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.isOpaque, 0.0)
+        self.drawHierarchy(in: self.bounds, afterScreenUpdates: true)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return img
+    }
+    
+    
+    //nib파일을 가져와서 오토레이아웃까지 추가하기
     public func addSubview(_ nibName: String, owner: UIViewController) -> UIView{
         let view = Bundle.main.loadNibNamed(nibName, owner: owner, options: nil)?.first as! UIView
         view.addFullConstraints(self)
         return view
     }
     
+    //오토레이아웃 추가하기
     public func addFullConstraints(_ superView: UIView){
         self.translatesAutoresizingMaskIntoConstraints = false
         superView.addSubview(self)
@@ -25,12 +36,14 @@ public extension UIView {
         superView.addConstraints(view_constraint_V)
     }
     
+    //테두리 설정
     public func setBorder(_ color: UIColor, width: CGFloat, radius: CGFloat){
         self.layer.borderColor = color.cgColor
         self.layer.borderWidth = width
         self.layer.cornerRadius = radius
     }
     
+    //패턴으로 테두리 설정
     public func addDashedBorder(_ color : UIColor, lineWidth : CGFloat!, dashPattern : [NSNumber], cornerRadius : CGFloat) {
         let shapeLayer:CAShapeLayer = CAShapeLayer()
         let frameSize = self.frame.size
@@ -45,6 +58,8 @@ public extension UIView {
         shapeLayer.path = UIBezierPath(roundedRect: shapeRect, cornerRadius: cornerRadius).cgPath
         self.layer.addSublayer(shapeLayer)
     }
+    
+    //한면만 테두리 설정
     public func layer(_ rect: UIRectEdge = .bottom, borderWidth : CGFloat = 1, color : UIColor = UIColor.black, border : CALayer = CALayer()) -> CALayer{
         border.borderColor = color.cgColor
         border.borderWidth = borderWidth

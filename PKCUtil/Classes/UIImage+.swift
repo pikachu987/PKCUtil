@@ -8,9 +8,17 @@
 
 import UIKit
 
+
+//확장자
+public enum ExtType{
+    case jpeg, png
+}
+
+
+
 public extension UIImage {
-    //이미지 컬러 바꾸기
-    public func imageWithColor(color: UIColor, size: CGSize) -> UIImage{
+    //해당영역 사이즈만큼 컬러를 채우고 Image로 뽑기
+    public func imageWithColor(_ color: UIColor, size: CGSize) -> UIImage{
         let rect: CGRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         color.setFill()
@@ -20,59 +28,44 @@ public extension UIImage {
         return image
     }
     
-    public func imageWithView(_ view: UIView) -> UIImage? {
-        UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.isOpaque, 0.0)
-        view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
-        let img = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return img
-    }
+    
+    
+    //image를 회전시키기
     public func imageRotatedByDegrees(_ degrees: CGFloat, flip: Bool) -> UIImage? {
         let degreesToRadians: (CGFloat) -> CGFloat = {
             return $0 / 180.0 * CGFloat(Double.pi)
         }
-        // calculate the size of the rotated view's containing box for our drawing space
         let rotatedViewBox = UIView(frame: CGRect(origin: CGPoint.zero, size: size))
         let t = CGAffineTransform(rotationAngle: degreesToRadians(degrees));
         rotatedViewBox.transform = t
         let rotatedSize = rotatedViewBox.frame.size
-        // Create the bitmap context
         UIGraphicsBeginImageContext(rotatedSize)
         let bitmap = UIGraphicsGetCurrentContext()
-        // Move the origin to the middle of the image so we will rotate and scale around the center.
         bitmap?.translateBy(x: rotatedSize.width / 2.0, y: rotatedSize.height / 2.0);
-        //Rotate the image context
         bitmap?.rotate(by: degreesToRadians(degrees));
-        // Now, draw the rotated/scaled image into the context
-        var yFlip: CGFloat
-        
-        if(flip){
-            yFlip = CGFloat(-1.0)
-        } else {
-            yFlip = CGFloat(1.0)
-        }
-        
+        let yFlip = flip ? CGFloat(-1.0) : CGFloat(1.0)
         bitmap?.scaleBy(x: yFlip, y: -1.0)
         guard let cgImg = self.cgImage else{
             return nil
         }
         bitmap?.draw(cgImg, in: CGRect(x: -size.width / 2, y: -size.height / 2, width: size.width, height: size.height))
-        
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
         return newImage
     }
     
+    
+    //이미지 리사이즈 시키기
     public func resize(_ size: CGSize) -> UIImage?{
         let hasAlpha = true
-        let scale: CGFloat = 0.0 // Use scale factor of main screen
+        let scale: CGFloat = 0.0
         UIGraphicsBeginImageContextWithOptions(size, !hasAlpha, scale)
         self.draw(in: CGRect(origin: CGPoint.zero, size: size))
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         return scaledImage
     }
     
+    //이미지 화질 변경 시키기
     public func rePercentage(withPercentage percentage: CGFloat) -> UIImage? {
         let canvasSize = CGSize(width: size.width * percentage, height: size.height * percentage)
         UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
@@ -80,6 +73,9 @@ public extension UIImage {
         draw(in: CGRect(origin: .zero, size: canvasSize))
         return UIGraphicsGetImageFromCurrentImageContext()
     }
+    
+    //이미지 리사이즈 하기(width기반)
+    @available(iOS, message: "resize")
     public func resizedPercentage(toWidth width: CGFloat) -> UIImage? {
         let canvasSize = CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))
         UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
@@ -89,12 +85,12 @@ public extension UIImage {
     }
     
     
-    //자르기
-    public func crop(to:CGSize) -> UIImage? {
+    //이미지를 크기만큼 줄이기 -> resize
+    @available(iOS, message: "resize")
+    public func crop(_ to:CGSize) -> UIImage? {
         guard let cgimage = self.cgImage else { return self }
         let contextImage: UIImage = UIImage(cgImage: cgimage)
         let contextSize: CGSize = contextImage.size
-        //Set to square
         var posX: CGFloat = 0.0
         var posY: CGFloat = 0.0
         let cropAspect: CGFloat = to.width / to.height
@@ -109,7 +105,7 @@ public extension UIImage {
             cropWidth = contextSize.height * cropAspect
             posX = (contextSize.width - cropWidth) / 2
         } else { //Square
-            if contextSize.width >= contextSize.height { //Square on landscape (or square)
+            if contextSize.width >= contextSize.height {
                 cropHeight = contextSize.height
                 cropWidth = contextSize.height * cropAspect
                 posX = (contextSize.width - cropWidth) / 2
@@ -120,13 +116,8 @@ public extension UIImage {
             }
         }
         let rect: CGRect = CGRect(x: posX, y: posY, width: cropWidth, height: cropHeight)
-        
-        // Create bitmap image from context using the rect
         let imageRef: CGImage = contextImage.cgImage!.cropping(to: rect)!
-        
-        // Create a new image based on the imageRef and rotate back to the original orientation
         let cropped: UIImage = UIImage(cgImage: imageRef, scale: self.scale, orientation: self.imageOrientation)
-        
         UIGraphicsBeginImageContextWithOptions(to, true, self.scale)
         cropped.draw(in: CGRect(x: 0, y: 0, width: to.width, height: to.height))
         let resized = UIGraphicsGetImageFromCurrentImageContext()
@@ -154,7 +145,7 @@ public extension UIImage {
     
     
     
-    //이미지 데이터로 바꾸기
+    //이미지를 데이터로 바꾸기
     public func returnImageData(_ ext : ExtType) -> Data{
         var data : Data = Data()
         switch ext {
@@ -173,7 +164,7 @@ public extension UIImage {
     }
     
     
-    //이미지 리사이즈
+    //이미지 리사이즈+화질 변경
     public func resizedImage(size: CGFloat = 1000, percent: CGFloat = 0.15, handler: @escaping ((UIImage) -> Void)){
         var width: CGFloat = 0
         var height: CGFloat = 0
@@ -186,7 +177,9 @@ public extension UIImage {
         }
         DispatchQueue.global().async {
             if let image = self.resize(CGSize(width: width, height: height))?.rePercentage(withPercentage: percent){
-                handler(image)
+                DispatchQueue.main.async {
+                    handler(image)
+                }
             }
         }
     }

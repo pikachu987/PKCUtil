@@ -9,6 +9,7 @@
 import UIKit
 
 public extension UIFont {
+    //fontName 출력
     public static func printFontNames() {
         for familyName in UIFont.familyNames {
             print("Family name: \(familyName)")
@@ -17,6 +18,8 @@ public extension UIFont {
             }
         }
     }
+    
+    //font 어레이로 불러오기
     public static func fontNames() -> [String]{
         var fontArray = [String]()
         for familyName in UIFont.familyNames {

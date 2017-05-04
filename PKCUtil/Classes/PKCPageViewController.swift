@@ -13,6 +13,8 @@ import UIKit
     @objc optional func pkcPageViewController(_ pageViewController: UIPageViewController, didUpdatePageIndex index: Int)
 }
 
+
+//페이지뷰 커스텀하기
 public class PKCPageViewController: UIPageViewController{
     weak public var pageViewDelegate: PKCPageViewControllerDelegate?
     public lazy var orderedViewControllers: [UIViewController] = [UIViewController]()
@@ -21,6 +23,7 @@ public class PKCPageViewController: UIPageViewController{
         self.delegate = self
     }
     
+    //좌우 스와이퍼
     public func setDataSource(){
         self.dataSource = self
     }
