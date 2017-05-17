@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 public extension UIColor {
-    public static func color(_ color: CGFloat) -> UIColor{
-        return UIColor(red: color/255, green: color/255, blue: color/255, alpha: 1)
+    public static func color(_ color: CGFloat, alpha: CGFloat = 1) -> UIColor{
+        return UIColor(red: color/255, green: color/255, blue: color/255, alpha: alpha)
     }
     
     //rgb
