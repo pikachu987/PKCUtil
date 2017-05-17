@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+
+        print(UIDevice.current.modelNameType)
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,3 +25,25 @@ class ViewController: UIViewController {
 
 }
 
+
+extension UIDevice{
+    public var modelName: String {
+        var systemInfo = utsname()
+        _ = uname(&systemInfo)
+        let machineString = Mirror(reflecting: systemInfo.machine).children.reduce("") { identifier, element in
+            guard let value = element.value as? Int8, value != 0 else { return identifier }
+            return identifier + String(UnicodeScalar(UInt8(value)))
+        }
+        return self.modelName(machineString: machineString)
+    }
+
+    public var modelNameType: UIDeviceModelType {
+        var systemInfo = utsname()
+        _ = uname(&systemInfo)
+        let machineString = Mirror(reflecting: systemInfo.machine).children.reduce("") { identifier, element in
+            guard let value = element.value as? Int8, value != 0 else { return identifier }
+            return identifier + String(UnicodeScalar(UInt8(value)))
+        }
+        return self.modelNameType(machineString: machineString)
+    }
+}
