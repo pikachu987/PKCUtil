@@ -16,6 +16,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
 
         print(UIDevice.current.modelNameType)
+        print(PKCUtil.deviceId)
     }
 
     override func didReceiveMemoryWarning() {
