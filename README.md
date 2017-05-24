@@ -20,6 +20,10 @@ it, simply add the following line to your Podfile:
 pod "PKCUtil"
 ```
 
+```ruby
+pod 'PKCUtil’, :git => ‘https://github.com/pikachu987/PKCUtil'
+```
+
 
 ## Author
 

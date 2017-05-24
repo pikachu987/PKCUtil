@@ -9,7 +9,7 @@
 import UIKit
 
 public extension UIScrollView {
-    var deltaOffsetX: CGFloat{
+    var deltaOffsetY: CGFloat{
         get{
             let currentOffset = self.contentOffset.y
             let maximumOffset = self.contentSize.height - self.frame.size.height
@@ -17,7 +17,7 @@ public extension UIScrollView {
             return deltaOffset
         }
     }
-    var deltaOffsetY: CGFloat{
+    var deltaOffsetX: CGFloat{
         get{
             let currentOffset = self.contentOffset.x
             let maximumOffset = self.contentSize.width - self.frame.size.width
