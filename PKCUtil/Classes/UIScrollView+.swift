@@ -9,6 +9,22 @@
 import UIKit
 
 public extension UIScrollView {
+    var deltaOffsetX: CGFloat{
+        get{
+            let currentOffset = self.contentOffset.y
+            let maximumOffset = self.contentSize.height - self.frame.size.height
+            let deltaOffset = maximumOffset - currentOffset
+            return deltaOffset
+        }
+    }
+    var deltaOffsetY: CGFloat{
+        get{
+            let currentOffset = self.contentOffset.x
+            let maximumOffset = self.contentSize.width - self.frame.size.width
+            let deltaOffset = maximumOffset - currentOffset
+            return deltaOffset
+        }
+    }
     //scroll을 최상위로 올리기
     public func scrollToTop() {
         let desiredOffset = CGPoint(x: 0, y: -contentInset.top)
