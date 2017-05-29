@@ -26,5 +26,29 @@ public extension Array{
         }
         return ""
     }
+
+
+    //어레이를 이중어레이로 나누기
+    public func division(_ count: Int) -> [[Element]]{
+        var array = [[Element]]()
+        var tempArray = [Element]()
+        for (index, element) in self.enumerated(){
+            if tempArray.count != 0 && index % count == 0{
+                array.append(tempArray)
+                tempArray = [Element]()
+            }
+            tempArray.append(element)
+        }
+        if tempArray.count != 0{
+            array.append(tempArray)
+        }
+        return array
+    }
+
+    //랜덤 아이템
+    public func random() -> Element{
+        let random = Int(arc4random_uniform(UInt32(self.count)))
+        return self[random]
+    }
 }
 
