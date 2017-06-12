@@ -82,10 +82,16 @@ open class PKCUtil{
         guard var urlPath = path else{
             return
         }
+        if urlPath == ""{
+            return
+        }
         if !urlPath.hasPrefix("http://") && !urlPath.hasPrefix("https://"){
             urlPath = "http://\(urlPath)"
         }
         guard let url = URL(string: urlPath) else {
+            return
+        }
+        if !UIApplication.shared.canOpenURL(url){
             return
         }
         if #available(iOS 9.0, *) {
@@ -121,10 +127,16 @@ open class PKCUtil{
     //기본 브라우져로 열기
     open static func openUrl(_ url: URL){
         var url = url
+        if url.absoluteString == ""{
+            return
+        }
         if !url.absoluteString.hasPrefix("http://") && !url.absoluteString.hasPrefix("https://"){
             if let value = URL(string: "http://\(url.absoluteString)"){
                 url = value
             }
+        }
+        if !UIApplication.shared.canOpenURL(url){
+            return
         }
         if #available(iOS 8.0, *) {
             UIApplication.shared.openURL(url)
