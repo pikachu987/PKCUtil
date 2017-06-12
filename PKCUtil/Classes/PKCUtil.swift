@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 open class PKCUtil{
     //언어
@@ -75,8 +76,40 @@ open class PKCUtil{
         let regEx = ".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*"
         return NSPredicate(format: "SELF MATCHES %@", regEx).evaluate(with: string)
     }
-    
-    
+
+    //SF사파리
+    open static func openSafari(_ path: String?, window: UIWindow?){
+        guard var urlPath = path else{
+            return
+        }
+        if !urlPath.hasPrefix("http://") && !urlPath.hasPrefix("https://"){
+            urlPath = "http://\(urlPath)"
+        }
+        guard let url = URL(string: urlPath) else {
+            return
+        }
+        if #available(iOS 9.0, *) {
+            let safariViewController = SFSafariViewController(url: url)
+            PKCUtil.checkViewController(window?.rootViewController) { (viewController) in
+                viewController?.present(safariViewController, animated: true, completion: nil)
+            }
+        } else {
+            PKCUtil.openUrl(url)
+        }
+    }
+
+
+    private static func checkViewController(_ viewController: UIViewController?, handler: ((UIViewController?) -> Void)){
+        if let navVC = viewController as? UINavigationController{
+            PKCUtil.checkViewController(navVC.visibleViewController, handler: handler)
+        }else if let tabBarVC = viewController as? UITabBarController{
+            PKCUtil.checkViewController(tabBarVC.selectedViewController, handler: handler)
+        }else{
+            handler(viewController)
+        }
+    }
+
+
     //기본 브라우져로 열기
     open static func openUrlPath(_ path: String?){
         guard let urlPath = path, let url = URL(string: urlPath) else {
@@ -87,6 +120,12 @@ open class PKCUtil{
     
     //기본 브라우져로 열기
     open static func openUrl(_ url: URL){
+        var url = url
+        if !url.absoluteString.hasPrefix("http://") && !url.absoluteString.hasPrefix("https://"){
+            if let value = URL(string: "http://\(url.absoluteString)"){
+                url = value
+            }
+        }
         if #available(iOS 8.0, *) {
             UIApplication.shared.openURL(url)
         }else{
