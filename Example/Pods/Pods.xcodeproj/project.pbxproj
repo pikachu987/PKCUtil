@@ -24,7 +24,6 @@
 		6E6B16631E8EB13000F71511 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6B16621E8EB13000F71511 /* Array+.swift */; };
 		6E6B16651E8EB15500F71511 /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6B16641E8EB15500F71511 /* Data+.swift */; };
 		6E6B16671E8EB1E800F71511 /* UIController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6B16661E8EB1E800F71511 /* UIController+.swift */; };
-		6E81A1631E8DD66100AF35EE /* PKCAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E81A1621E8DD66100AF35EE /* PKCAlert.swift */; };
 		6E81A1651E8DD6E200AF35EE /* PKCPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E81A1641E8DD6E200AF35EE /* PKCPageViewController.swift */; };
 		6E81A1671E8DD7C400AF35EE /* Int+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E81A1661E8DD7C400AF35EE /* Int+.swift */; };
 		6E81A1691E8DD7D500AF35EE /* Double+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E81A1681E8DD7D500AF35EE /* Double+.swift */; };
@@ -82,7 +81,6 @@
 		6E6B16621E8EB13000F71511 /* Array+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		6E6B16641E8EB15500F71511 /* Data+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
 		6E6B16661E8EB1E800F71511 /* UIController+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIController+.swift"; sourceTree = "<group>"; };
-		6E81A1621E8DD66100AF35EE /* PKCAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKCAlert.swift; sourceTree = "<group>"; };
 		6E81A1641E8DD6E200AF35EE /* PKCPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKCPageViewController.swift; sourceTree = "<group>"; };
 		6E81A1661E8DD7C400AF35EE /* Int+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+.swift"; sourceTree = "<group>"; };
 		6E81A1681E8DD7D500AF35EE /* Double+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+.swift"; sourceTree = "<group>"; };
@@ -150,7 +148,6 @@
 				6EC8EDE51E272BE9004DD677 /* Save */,
 				6EC8EDE41E272BE3004DD677 /* Util */,
 				6EC8EDE31E272BD5004DD677 /* Extension */,
-				6E81A1621E8DD66100AF35EE /* PKCAlert.swift */,
 				6E81A1641E8DD6E200AF35EE /* PKCPageViewController.swift */,
 			);
 			path = Classes;
@@ -476,7 +473,6 @@
 				6E6B16651E8EB15500F71511 /* Data+.swift in Sources */,
 				6EC8EDE71E272C38004DD677 /* Storage.swift in Sources */,
 				6E6770701E268F1200B0BF88 /* UIImageView+.swift in Sources */,
-				6E81A1631E8DD66100AF35EE /* PKCAlert.swift in Sources */,
 				6E67706B1E268F1200B0BF88 /* String+.swift in Sources */,
 				6E6770691E268F1200B0BF88 /* Date+.swift in Sources */,
 				6EC8EDEE1E272C83004DD677 /* PresentMenuAnimator.swift in Sources */,
