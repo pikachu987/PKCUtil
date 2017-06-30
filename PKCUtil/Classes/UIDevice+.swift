@@ -38,6 +38,7 @@ public enum UIDeviceModelType: String{
     case iPod = "iPod"
     case iPad = "iPad"
     case appleTV = "appleTV"
+    case iPhone = "iPhone"
     case iPhone4 = "iPhone4"
     case iPhone5 = "iPhone5"
     case iPhone6 = "iPhone6"
@@ -99,7 +100,17 @@ public extension UIDevice {
         case "iPad5,1", "iPad5,2":                      return .iPad
         case "iPad6,3", "iPad6,4", "iPad6,7", "iPad6,8":return .iPad
         case "AppleTV5,3":                              return .appleTV
-        default:                                        return .none
+        default:
+            if machineString.lowercased().contains("ipad"){
+                return .iPad
+            }else if machineString.lowercased().contains("iphone"){
+                return .iPhone
+            }else if machineString.lowercased().contains("ipod"){
+                return .iPod
+            }else if machineString.lowercased().contains("appletv"){
+                return .appleTV
+            }
+            return .none
         }
     }
 
