@@ -18,6 +18,7 @@ import UIKit
 public class PKCPageViewController: UIPageViewController{
     weak public var pageViewDelegate: PKCPageViewControllerDelegate?
     public lazy var orderedViewControllers: [UIViewController] = [UIViewController]()
+    public var isReload = false
     public override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
@@ -81,8 +82,10 @@ extension PKCPageViewController: UIPageViewControllerDataSource {
             return nil
         }
         let previousIndex = viewControllerIndex - 1
-        if previousIndex < 0{
-            return nil
+        if !self.isReload{
+            if previousIndex < 0{
+                return nil
+            }
         }
         guard previousIndex >= 0 else {
             return orderedViewControllers.last
@@ -98,15 +101,13 @@ extension PKCPageViewController: UIPageViewControllerDataSource {
             return nil
         }
         let nextIndex = viewControllerIndex + 1
-        let orderedViewControllersCount = orderedViewControllers.count
-        if nextIndex > 1{
-            return nil
+        if !self.isReload{
+            if nextIndex >= orderedViewControllers.count{
+                return nil
+            }
         }
-        guard orderedViewControllersCount != nextIndex else {
+        guard orderedViewControllers.count != nextIndex else {
             return orderedViewControllers.first
-        }
-        guard orderedViewControllersCount > nextIndex else {
-            return nil
         }
         return orderedViewControllers[nextIndex]
     }
