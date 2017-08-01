@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension Float{
-    func priceComma() -> String{
+public extension Float{
+    public func priceComma() -> String{
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = NumberFormatter.Style.decimal
         if let pointValue = numberFormatter.string(from: NSNumber(value: self)){

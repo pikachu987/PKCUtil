@@ -29,8 +29,8 @@ public extension DoubleConvertible {
 }
 
 
-extension Double{
-    func priceComma() -> String{
+public extension Double{
+    public func priceComma() -> String{
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = NumberFormatter.Style.decimal
         if let pointValue = numberFormatter.string(from: NSNumber(value: self)){
