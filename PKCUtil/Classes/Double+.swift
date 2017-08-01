@@ -27,3 +27,16 @@ public extension DoubleConvertible {
         return Self(double * 180 / Double.pi)
     }
 }
+
+
+extension Double{
+    func priceComma() -> String{
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        if let pointValue = numberFormatter.string(from: NSNumber(value: self)){
+            return pointValue
+        }else{
+            return "0"
+        }
+    }
+}

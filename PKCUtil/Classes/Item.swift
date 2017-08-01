@@ -8,17 +8,42 @@
 
 //import Foundation
 //import SwiftyJSON
-
-
+//
 //class Item {
+//    static func value(ofUrl: Any?) -> String{
+//        var url = ""
+//        if let json = ofUrl as? JSON{
+//            if let value = json.string{
+//                url = value
+//            }
+//        }else if let value = ofUrl as? String{
+//            url = value
+//        }
+//        //#이 들어가야되는데 #까지 %23으로 바껴서 다시 replace함
+//        if let urlPath = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+//            url = urlPath.replacingOccurrences(of: "%23", with: "#")
+//        }
+//        return url
+//    }
+//
 //    static func value(ofString: Any?) -> String{
 //        if let json = ofString as? JSON{
 //            if let value = json.string{
 //                return value
 //            }else if let value = json.double{
-//                return "\(value)"
+//                let val = "\(value)"
+//                if val.hasSuffix(".0"){
+//                    return val.substring(from: 0, length: val.characters.count - 2)
+//                }else{
+//                    return val
+//                }
 //            }else if let value = json.float{
-//                return "\(value)"
+//                let val = "\(value)"
+//                if val.hasSuffix(".0"){
+//                    return val.substring(from: 0, length: val.characters.count - 2)
+//                }else{
+//                    return val
+//                }
 //            }else if let value = json.bool{
 //                return "\(value)"
 //            }else if let value = json.int{
@@ -141,5 +166,41 @@
 //            return NSDate(timeIntervalSince1970: Double(value)) as Date
 //        }
 //        return Date()
+//    }
+//
+//
+//    static func value(ofBool: Any?) -> Bool{
+//        if let json = ofBool as? JSON{
+//            if let value = json.bool{
+//                return value
+//            }else if let value = json.string{
+//                if value == "false" || value == "0.0" || value == "0"{
+//                    return false
+//                }else{
+//                    return true
+//                }
+//            }else if let value = json.double{
+//                return value == 0 ? false : true
+//            }else if let value = json.float{
+//                return value == 0 ? false : true
+//            }else if let value = json.int{
+//                return value == 0 ? false : true
+//            }
+//        }else if let value = ofBool as? Bool{
+//            return value
+//        }else if let value = ofBool as? String{
+//            if value == "false" || value == "0.0" || value == "0"{
+//                return false
+//            }else{
+//                return true
+//            }
+//        }else if let value = ofBool as? Double{
+//            return value == 0 ? false : true
+//        }else if let value = ofBool as? Float{
+//            return value == 0 ? false : true
+//        }else if let value = ofBool as? Int{
+//            return value == 0 ? false : true
+//        }
+//        return false
 //    }
 //}
