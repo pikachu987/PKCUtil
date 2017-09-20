@@ -17,6 +17,8 @@ class ViewController: UIViewController {
 
         print(UIDevice.current.modelNameType)
         print(PKCUtil.deviceId)
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
