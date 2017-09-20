@@ -43,8 +43,12 @@ public enum UIDeviceModelType: String{
     case iPhone5 = "iPhone5"
     case iPhone6 = "iPhone6"
     case iPhone7 = "iPhone7"
+    case iPhone8 = "iPhone8"
+    case iPhoneSE = "iPhoneSE"
     case iPhone6Plus = "iPhone6Plus"
     case iPhone7Plus = "iPhone7Plus"
+    case iPhone8Plus = "iPhone8Plus"
+    case iPhoneX = "iPhoneX"
 }
 
 //device 모델명 출력
@@ -86,9 +90,12 @@ public extension UIDevice {
         case "iPhone7,1":                               return .iPhone6Plus
         case "iPhone8,1":                               return .iPhone6
         case "iPhone8,2":                               return .iPhone6Plus
+        case "iPhone8,4":                               return .iPhoneSE
         case "iPhone9,1", "iPhone9,3":                  return .iPhone7
         case "iPhone9,2", "iPhone9,4":                  return .iPhone7Plus
-        case "iPhone8,4":                               return .iPhone5
+        case "iPhone10,3":                              return .iPhoneX
+        case "iPhone10,4":                              return .iPhone8
+        case "iPhone10,5":                              return .iPhone8Plus
         case "iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4":return .iPad
         case "iPad3,1", "iPad3,2", "iPad3,3":           return .iPad
         case "iPad3,4", "iPad3,5", "iPad3,6":           return .iPad
@@ -128,9 +135,12 @@ public extension UIDevice {
         case "iPhone7,1":                               return "iPhone 6 Plus"
         case "iPhone8,1":                               return "iPhone 6s"
         case "iPhone8,2":                               return "iPhone 6s Plus"
+        case "iPhone8,4":                               return "iPhone SE"
         case "iPhone9,1", "iPhone9,3":                  return "iPhone 7"
         case "iPhone9,2", "iPhone9,4":                  return "iPhone 7 Plus"
-        case "iPhone8,4":                               return "iPhone SE"
+        case "iPhone10,3":                              return "iPhoneX"
+        case "iPhone10,4":                              return "iPhone 8"
+        case "iPhone10,5":                              return "iPhone 8 Plus"
         case "iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4":return "iPad 2"
         case "iPad3,1", "iPad3,2", "iPad3,3":           return "iPad 3"
         case "iPad3,4", "iPad3,5", "iPad3,6":           return "iPad 4"

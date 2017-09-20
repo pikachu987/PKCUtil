@@ -48,3 +48,4 @@ extension UIDevice{
         return self.modelNameType(machineString: machineString)
     }
 }
+

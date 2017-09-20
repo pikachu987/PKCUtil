@@ -16,7 +16,7 @@ fileprivate class ActionSingleton{
 
 public extension UITextField{
     //액션 추가
-    private func addAction(action: @escaping ((Void) -> Void)){
+    private func addAction(action: @escaping (() -> Void)){
         let actionSingleton = ActionSingleton.shared
         actionSingleton.editingChangedEventDict.updateValue( action, forKey: self)
         self.addTarget(self, action: #selector(self.editingChangedAction), for: .editingChanged)

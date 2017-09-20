@@ -141,4 +141,17 @@ public extension String {
             return string.characters.count == 0 ? noneSearch : self.contains(string)
         }
     }
+    
+    
+    
+    //해당 문자열중 워드를 골라서 NSRange로 만듬
+    public func nsRange(_ words: String) -> NSRange? {
+        guard let range = self.range(of: words) else{
+            return nil
+        }
+        guard let lower = UTF16View.Index(range.lowerBound, within: utf16), let upper = UTF16View.Index(range.upperBound, within: utf16) else{
+            return nil
+        }
+        return NSRange(location: lower.encodedOffset, length: upper.encodedOffset - lower.encodedOffset)
+    }
 }
