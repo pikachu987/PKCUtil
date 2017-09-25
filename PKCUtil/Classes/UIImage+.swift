@@ -207,7 +207,7 @@ public extension UIImage {
     }
     
     //이미지 컬러 바꿈
-    func renderingOriginal(_ color: UIColor) -> UIImage?{
-        return self.colorized(.color)?.withRenderingMode(.alwaysOriginal)
+    public func renderingOriginal(_ imageColor: UIColor) -> UIImage?{
+        return self.colorized(imageColor)?.withRenderingMode(.alwaysOriginal)
     }
 }

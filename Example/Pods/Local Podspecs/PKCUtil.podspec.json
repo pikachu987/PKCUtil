@@ -1,9 +1,9 @@
 {
   "name": "PKCUtil",
-  "version": "0.1.0",
-  "summary": "A short description of PKCUtil.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/PKCUtil",
+  "version": "0.4.2",
+  "summary": "Util made easy to write for each project",
+  "description": "I always use copy / paste for each project, so I think it would be more convenient to use library for cocoapods.",
+  "homepage": "https://github.com/pikachu987/PKCUtil",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,8 +12,8 @@
     "pikachu987": "pikachu987@naver.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/PKCUtil.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/pikachu987/PKCUtil.git",
+    "tag": "0.4.2"
   },
   "platforms": {
     "ios": "8.0"
