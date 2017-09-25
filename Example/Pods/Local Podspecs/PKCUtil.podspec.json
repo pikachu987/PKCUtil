@@ -1,6 +1,6 @@
 {
   "name": "PKCUtil",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "summary": "Util made easy to write for each project",
   "description": "I always use copy / paste for each project, so I think it would be more convenient to use library for cocoapods.",
   "homepage": "https://github.com/pikachu987/PKCUtil",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/pikachu987/PKCUtil.git",
-    "tag": "0.4.2"
+    "tag": "0.4.3"
   },
   "platforms": {
     "ios": "8.0"

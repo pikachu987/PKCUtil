@@ -187,6 +187,11 @@ public extension UIImage {
     
     
     //이미지 컬러 바꿈
+    public func renderingOriginal(_ imageColor: UIColor) -> UIImage?{
+        return self.colorized(imageColor)?.withRenderingMode(.alwaysOriginal)
+    }
+    
+    //이미지 컬러 바꿈
     public func colorized(_ color : UIColor) -> UIImage? {
         let rect = CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height)
         UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
@@ -204,10 +209,5 @@ public extension UIImage {
         let colorizedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return colorizedImage
-    }
-    
-    //이미지 컬러 바꿈
-    public func renderingOriginal(_ imageColor: UIColor) -> UIImage?{
-        return self.colorized(imageColor)?.withRenderingMode(.alwaysOriginal)
     }
 }

@@ -1,5 +1,5 @@
 PODS:
-  - PKCUtil (0.4.2)
+  - PKCUtil (0.4.3)
 
 DEPENDENCIES:
   - PKCUtil (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  PKCUtil: 9dc6d2c4404b401d591fb53c06a02bbd0a74220a
+  PKCUtil: a6aea6d29aa4b2e58c85a0f2e1c86ccab282a748
 
 PODFILE CHECKSUM: 6ea2f65c5b750f0f5b19883ce889ca3e10fbbe3c
 
