@@ -30,6 +30,7 @@ public extension UIImage {
     
     
     
+    
     //image를 회전시키기
     public func imageRotatedByDegrees(_ degrees: CGFloat, flip: Bool) -> UIImage? {
         let degreesToRadians: (CGFloat) -> CGFloat = {
@@ -203,5 +204,10 @@ public extension UIImage {
         let colorizedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return colorizedImage
+    }
+    
+    //이미지 컬러 바꿈
+    func renderingOriginal(_ color: UIColor) -> UIImage?{
+        return self.colorized(.color)?.withRenderingMode(.alwaysOriginal)
     }
 }

@@ -20,11 +20,19 @@ extension CGFloat: DoubleConvertible { public var double: Double { return Double
 
 //degree <-> radian
 public extension DoubleConvertible {
-    public var degreesToRadians: DoubleConvertible {
-        return Self(double * Double.pi / 180)
+    public var degreesToRadians: CGFloat {
+        if let value = Self(double * Double.pi / 180) as? CGFloat{
+            return value
+        }else{
+            return 0
+        }
     }
-    public var radiansToDegrees: DoubleConvertible {
-        return Self(double * 180 / Double.pi)
+    public var radiansToDegrees: CGFloat {
+        if let value = Self(double * 180 / Double.pi) as? CGFloat{
+            return value
+        }else{
+            return 0
+        }
     }
 }
 
