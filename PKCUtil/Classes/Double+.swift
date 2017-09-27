@@ -38,6 +38,11 @@ public extension DoubleConvertible {
 
 
 public extension Double{
+    //abs
+    public func abs() -> Double{
+        return self > 0 ? self : -self
+    }
+    
     public func priceComma() -> String{
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = NumberFormatter.Style.decimal

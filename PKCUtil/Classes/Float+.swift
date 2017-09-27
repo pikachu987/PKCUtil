@@ -9,6 +9,11 @@
 import Foundation
 
 public extension Float{
+    
+    public func abs() -> Float{
+        return self > 0 ? self : -self
+    }
+    
     public func priceComma() -> String{
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = NumberFormatter.Style.decimal
@@ -19,3 +24,10 @@ public extension Float{
         }
     }
 }
+
+public extension CGFloat{
+    public func abs() -> CGFloat{
+        return self > 0 ? self : -self
+    }
+}
+

@@ -149,7 +149,7 @@ public extension Date{
     }
     
     //금일과 같으면 시간, 다르면 날짜 보여주기
-    public func getDispalyRegDate(_ dateOf: String = ".") -> String{
+    public func getDispalyRegDate(_ morning: String, afternoon: String, dateOf: String = ".") -> String{
         guard let hour = self.hourInt() else {
             return ""
         }
@@ -160,16 +160,26 @@ public extension Date{
                 if hour > 9{
                     hourStr = "\(hour)"
                 }
-                return "오후 \(hourStr):\(self.minute())"
+                return "\(afternoon) \(hourStr):\(self.minute())"
             }else{
                 var hourStr = "0\(hour)"
                 if hour > 9{
                     hourStr = "\(hour)"
                 }
-                return "오전 \(hourStr):\(self.minute())"
+                return "\(morning) \(hourStr):\(self.minute())"
             }
         }else{
             return self.getDate(of: dateOf)
         }
+    }
+    
+    
+    //현재시간 밀리세컨드로
+    public var millisecondsSince1970:Int {
+        return Int((self.timeIntervalSince1970 * 1000.0).rounded())
+    }
+    
+    public init(milliseconds:Int) {
+        self = Date(timeIntervalSince1970: TimeInterval(milliseconds / 1000))
     }
 }
