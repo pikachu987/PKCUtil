@@ -40,9 +40,9 @@ public extension UIView {
     public func addRectConstraints(_ superView: UIView, top: CGFloat = 0, bottom: CGFloat = 0, leading: CGFloat = 0, trailing: CGFloat = 0) -> [NSLayoutConstraint]{
         self.translatesAutoresizingMaskIntoConstraints = false
         superView.addSubview(self)
-        let topConst = NSLayoutConstraint(item: superView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: top)
+        let topConst = NSLayoutConstraint(item: superView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: -top)
         let bottomConst = NSLayoutConstraint(item: superView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: bottom)
-        let leadingConst = NSLayoutConstraint(item: superView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: leading)
+        let leadingConst = NSLayoutConstraint(item: superView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: -leading)
         let trailingConst = NSLayoutConstraint(item: superView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: trailing)
         superView.addConstraints([topConst, bottomConst, leadingConst, trailingConst])
         return [topConst, bottomConst, leadingConst, trailingConst]
