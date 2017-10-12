@@ -19,17 +19,17 @@ public extension UIViewController{
 }
 public extension UINavigationController {
     //pop이동후 해당 핸들러 실행
-    public func popViewControllerWithHandler(completion: @escaping ()->()) {
+    public func popViewControllerWithHandler(_ animated: Bool, completion: @escaping ()->()) {
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
-        self.popViewController(animated: false)
+        self.popViewController(animated: animated)
         CATransaction.commit()
     }
     //push이동후 해당 핸들러 실행
-    public func pushViewController(viewController: UIViewController, completion: @escaping ()->()) {
+    public func pushViewController(_ animated: Bool, viewController: UIViewController, completion: @escaping ()->()) {
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
-        self.pushViewController(viewController, animated: false)
+        self.pushViewController(viewController, animated: animated)
         CATransaction.commit()
     }
 }
