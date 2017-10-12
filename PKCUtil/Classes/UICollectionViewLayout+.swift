@@ -21,6 +21,16 @@ public extension UICollectionViewLayout{
         return flow
     }
     
+    //width, height를 받는 레이아웃
+    public static func verticalLayout(width: CGFloat, height: CGFloat) -> UICollectionViewLayout{
+        let flow = UICollectionViewFlowLayout()
+        flow.scrollDirection = .vertical
+        flow.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        flow.itemSize = CGSize(width: width, height: height)
+        flow.minimumInteritemSpacing = 0
+        flow.minimumLineSpacing = 0
+        return flow
+    }
     
     
     public func size() -> CGSize{

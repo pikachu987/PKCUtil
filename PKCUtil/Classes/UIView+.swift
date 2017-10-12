@@ -35,10 +35,25 @@ public extension UIView {
         superView.addConstraints(view_constraint_H)
         superView.addConstraints(view_constraint_V)
     }
-
+    
+    @discardableResult
+    public func addRectConstraints(_ superView: UIView, top: CGFloat = 0, bottom: CGFloat = 0, leading: CGFloat = 0, trailing: CGFloat = 0) -> [NSLayoutConstraint]{
+        self.translatesAutoresizingMaskIntoConstraints = false
+        superView.addSubview(self)
+        let topConst = NSLayoutConstraint(item: superView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: top)
+        let bottomConst = NSLayoutConstraint(item: superView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: bottom)
+        let leadingConst = NSLayoutConstraint(item: superView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: leading)
+        let trailingConst = NSLayoutConstraint(item: superView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: trailing)
+        superView.addConstraints([topConst, bottomConst, leadingConst, trailingConst])
+        return [topConst, bottomConst, leadingConst, trailingConst]
+    }
+    
+    @discardableResult
     public func horizontalLayout(left: CGFloat = 0, right: CGFloat = 0) -> [NSLayoutConstraint]{
         return NSLayoutConstraint.constraints(withVisualFormat: "H:|-\(left)-[view]-\(right)-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": self])
     }
+    
+    @discardableResult
     public func verticalLayout(top: CGFloat = 0, bottom: CGFloat = 0) -> [NSLayoutConstraint]{
         return NSLayoutConstraint.constraints(withVisualFormat: "V:|-\(top)-[view]-\(bottom)-|", options: NSLayoutFormatOptions.alignAllLeading, metrics: nil, views: ["view": self])
     }
