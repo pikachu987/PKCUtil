@@ -26,8 +26,8 @@
 		504066677AE2E9389BAC094D065D916F /* Pods-PKCUtil_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DC5E0E0C3BCB2657312D11F472D7F102 /* Pods-PKCUtil_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5E1DC4269B35B023B7ED190E4A42D1ED /* PKCUtil-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B40B1FD125A6F5243C590B92C6E9ABC5 /* PKCUtil-dummy.m */; };
 		5E65FAC3FF0739A27F0E77A0273C3770 /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B301FE88880D5596B3313E66F4C32B0 /* UIScrollView+.swift */; };
-		61C15F431F8F25F800E46DC7 /* UISearchBar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C15F421F8F25F800E46DC7 /* UISearchBar+.swift */; };
-		61C15F451F8F264000E46DC7 /* NSMutableAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C15F441F8F264000E46DC7 /* NSMutableAttributedString+.swift */; };
+		61C15F4A1F8F2A7000E46DC7 /* UISearchBar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C15F481F8F2A7000E46DC7 /* UISearchBar+.swift */; };
+		61C15F4B1F8F2A7000E46DC7 /* NSMutableAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C15F491F8F2A7000E46DC7 /* NSMutableAttributedString+.swift */; };
 		61E69F2224C5AC5AD463E0DC62D3F4A3 /* Pods-PKCUtil_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D46F09158540B40956F1012700C81F4B /* Pods-PKCUtil_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7D980236AB9D90277A009F06FDA2240E /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48460F940A7B841D1E93BF2CD0700D3 /* UIImageView+.swift */; };
 		7FD6706686CDDB3DC1C83D3CC22D9714 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
@@ -87,8 +87,8 @@
 		5461CC77131243DCD99859557A07E9A9 /* Item.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Item.swift; path = PKCUtil/Classes/Item.swift; sourceTree = "<group>"; };
 		5B301FE88880D5596B3313E66F4C32B0 /* UIScrollView+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIScrollView+.swift"; path = "PKCUtil/Classes/UIScrollView+.swift"; sourceTree = "<group>"; };
 		60E9F3C807D52EA192B42173785D1C40 /* UIColor+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+.swift"; path = "PKCUtil/Classes/UIColor+.swift"; sourceTree = "<group>"; };
-		61C15F421F8F25F800E46DC7 /* UISearchBar+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+.swift"; sourceTree = "<group>"; };
-		61C15F441F8F264000E46DC7 /* NSMutableAttributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+.swift"; sourceTree = "<group>"; };
+		61C15F481F8F2A7000E46DC7 /* UISearchBar+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UISearchBar+.swift"; path = "PKCUtil/Classes/UISearchBar+.swift"; sourceTree = "<group>"; };
+		61C15F491F8F2A7000E46DC7 /* NSMutableAttributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "NSMutableAttributedString+.swift"; path = "PKCUtil/Classes/NSMutableAttributedString+.swift"; sourceTree = "<group>"; };
 		640071BEB5B9603FCA5352D10468DB9C /* UINavigationItem+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UINavigationItem+.swift"; path = "PKCUtil/Classes/UINavigationItem+.swift"; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		6DFF723D7209A01FE70E78B4382FC16B /* Pods-PKCUtil_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PKCUtil_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -297,9 +297,9 @@
 				983BD59310EE3B7ACF31B536B1577D01 /* UITextView+.swift */,
 				225D5308966AB452A460C15A87045428 /* UIToolbar+.swift */,
 				AB2D4F4AFBBD8FE9514A6058B238BAA4 /* UIView+.swift */,
+				61C15F491F8F2A7000E46DC7 /* NSMutableAttributedString+.swift */,
+				61C15F481F8F2A7000E46DC7 /* UISearchBar+.swift */,
 				6E89894BFDB5CD1C391D2DB688A3990E /* Support Files */,
-				61C15F421F8F25F800E46DC7 /* UISearchBar+.swift */,
-				61C15F441F8F264000E46DC7 /* NSMutableAttributedString+.swift */,
 			);
 			name = PKCUtil;
 			path = ../..;
@@ -446,7 +446,7 @@
 				82B598BB770B8D67D0B7BFC04AA005BE /* Float+.swift in Sources */,
 				A4E73B5A0DBA67173F73FADC78A09DFE /* Int+.swift in Sources */,
 				D3BA49ECED7F78D59FF0B82E0BBB6687 /* Interactor.swift in Sources */,
-				61C15F451F8F264000E46DC7 /* NSMutableAttributedString+.swift in Sources */,
+				61C15F4B1F8F2A7000E46DC7 /* NSMutableAttributedString+.swift in Sources */,
 				CC01BC17E717996A81CB97200599B07E /* Item.swift in Sources */,
 				2E11959793FDF2DDD0C599236FF9AB20 /* KoreanInitial.plist in Sources */,
 				CFB9C3FF462BEC701AD362816E8A02D1 /* PKCPageViewController.swift in Sources */,
@@ -470,7 +470,7 @@
 				DF6A7D2F07DA9B7A7D55C6D204540C70 /* UITextView+.swift in Sources */,
 				EDAAF2D4824A875093B049E3E013FB08 /* UIToolbar+.swift in Sources */,
 				1D97A2482C1A4A50CDF7290282F7070C /* UIView+.swift in Sources */,
-				61C15F431F8F25F800E46DC7 /* UISearchBar+.swift in Sources */,
+				61C15F4A1F8F2A7000E46DC7 /* UISearchBar+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
