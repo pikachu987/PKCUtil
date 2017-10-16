@@ -175,8 +175,13 @@ public extension Date{
     
     
     //현재시간 밀리세컨드로
-    public var millisecondsSince1970:Int {
-        return Int((self.timeIntervalSince1970 * 1000.0).rounded())
+    public var millisecondsSince1970:String {
+        let date = (self.timeIntervalSince1970 * 1000.0).rounded()
+        let value = "\(date)"
+        if let milliseconds = value.split(separator: ".").first{
+            return "\(milliseconds)"
+        }
+        return "\(value)"
     }
     
     public init(milliseconds:Int) {
