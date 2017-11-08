@@ -7,13 +7,13 @@
 
 import UIKit
 
-struct RGB {
+public struct RGB {
     // Percent
-    let r: CGFloat // [0,1]
-    let g: CGFloat // [0,1]
-    let b: CGFloat // [0,1]
+    public let r: CGFloat // [0,1]
+    public let g: CGFloat // [0,1]
+    public let b: CGFloat // [0,1]
     
-    static func hsv(r: CGFloat, g: CGFloat, b: CGFloat) -> HSV {
+    public static func hsv(r: CGFloat, g: CGFloat, b: CGFloat) -> HSV {
         let min = r < g ? (r < b ? r : b) : (g < b ? g : b)
         let max = r > g ? (r > b ? r : b) : (g > b ? g : b)
         
@@ -35,31 +35,31 @@ struct RGB {
         return HSV(h: (h < 0 ? h+360 : h) , s: s, v: v)
     }
     
-    static func hsv(_ rgb: RGB) -> HSV {
+    public static func hsv(_ rgb: RGB) -> HSV {
         return hsv(r: rgb.r, g: rgb.g, b: rgb.b)
     }
     
-    var hsv: HSV {
+    public var hsv: HSV {
         return RGB.hsv(self)
     }
 }
 
-struct RGBA {
+public struct RGBA {
     let a: CGFloat
     let rgb: RGB
     
-    init(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
+    public init(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
         self.a = a
         self.rgb = RGB(r: r, g: g, b: b)
     }
 }
 
-struct HSV {
-    let h: CGFloat // Angle in degrees [0,360] or -1 as Undefined
-    let s: CGFloat // Percent [0,1]
-    let v: CGFloat // Percent [0,1]
+public struct HSV {
+    public let h: CGFloat // Angle in degrees [0,360] or -1 as Undefined
+    public let s: CGFloat // Percent [0,1]
+    public let v: CGFloat // Percent [0,1]
     
-    static func rgb(_ h: CGFloat, s: CGFloat, v: CGFloat) -> RGB {
+    public static func rgb(_ h: CGFloat, s: CGFloat, v: CGFloat) -> RGB {
         if s == 0 { return RGB(r: v, g: v, b: v) } // Achromatic grey
         
         let angle = (h >= 360 ? 0 : h)
@@ -87,16 +87,16 @@ struct HSV {
         }
     }
     
-    static func rgb(_ hsv: HSV) -> RGB {
+    public static func rgb(_ hsv: HSV) -> RGB {
         return rgb(hsv.h, s: hsv.s, v: hsv.v)
     }
     
-    var rgb: RGB {
+    public var rgb: RGB {
         return HSV.rgb(self)
     }
     
     /// Returns a normalized point with x=h and y=v
-    var point: CGPoint {
+    public var point: CGPoint {
         return CGPoint(x: CGFloat(h/360), y: CGFloat(v))
     }
 }
