@@ -24,7 +24,7 @@ public extension UITextField{
     //textField 최대 길이 제한
     public func maxLength(_ maxLength : Int){
         self.addAction {
-            guard let count =  self.text?.characters.count else{
+            guard let count =  self.text?.count else{
                 return
             }
             if count > maxLength {

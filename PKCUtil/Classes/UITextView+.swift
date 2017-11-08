@@ -39,7 +39,7 @@ public extension UITextView{
     //텍스트뷰 딜리게이트 메서드에서 사용 placeholder과 maxLength
     public func textView(_ maxLength: Int = -1, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool{
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            if self.text.characters.count > 0{
+            if self.text.count > 0{
                 self.textColor = UIColor.black
             }
         }

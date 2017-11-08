@@ -60,21 +60,21 @@ public extension String {
     public func substring(from:Int = 0, to:Int = -1) -> String {
         var toTmp = to
         if toTmp < 0 {
-            toTmp = self.characters.count + toTmp
+            toTmp = self.count + toTmp
         }
         //from toTmp+1
-        let range = self.characters.index(self.startIndex, offsetBy: from)..<self.characters.index(self.startIndex, offsetBy: toTmp+1)
+        let range = self.index(self.startIndex, offsetBy: from)..<self.index(self.startIndex, offsetBy: toTmp+1)
         return String(self[range])
     }
     
     //substring
     public func substring(from:Int = 0, length:Int) -> String {
-        let range = self.characters.index(self.startIndex, offsetBy: from)..<self.characters.index(self.startIndex, offsetBy: from+length)
+        let range = self.index(self.startIndex, offsetBy: from)..<self.index(self.startIndex, offsetBy: from+length)
         return String(self[range])
     }
     
     public func range() -> Range<Index>{
-        let range = self.characters.index(self.startIndex, offsetBy: 0)..<self.characters.index(self.startIndex, offsetBy: self.characters.count-1)
+        let range = self.index(self.startIndex, offsetBy: 0)..<self.index(self.startIndex, offsetBy: self.count-1)
         return range
     }
     
@@ -133,7 +133,7 @@ public extension String {
     //Initial Auto Complete 초성 자동완성
     public func makeInitail() -> String{
         var out = ""
-        for (index, _) in self.characters.enumerated() {
+        for (index, _) in self.enumerated() {
             let oneChar: UniChar = NSString(string: self).character(at: index)
             if (oneChar >= 0xAC00 && oneChar <= 0xD7A3){
                 let value = ((oneChar - 0xAC00)/28)/21 + 0x1100
@@ -158,10 +158,10 @@ public extension String {
     
     //초성 자동완성 글자 비교하기
     public func isContains(_ string: String, noneSearch: Bool = true) -> Bool{
-        if string.characters.count == 1 && string.makeInitail() == ""{
+        if string.count == 1 && string.makeInitail() == ""{
             return PKCUtil.isValidateKorean(string) ? self.makeInitail().contains(string) : self.contains(string)
         }else{
-            return string.characters.count == 0 ? noneSearch : self.contains(string)
+            return string.count == 0 ? noneSearch : self.contains(string)
         }
     }
     
