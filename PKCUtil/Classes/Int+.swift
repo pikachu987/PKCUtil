@@ -15,6 +15,7 @@ public extension Int {
         return self > 0 ? self : -self
     }
     
+    
     //degree <-> radian
     public var degreesToRadians: Double { return Double(self) * Double.pi / 180 }
     
