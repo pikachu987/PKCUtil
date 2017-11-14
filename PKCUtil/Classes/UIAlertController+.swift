@@ -133,14 +133,18 @@ public extension UIAlertController{
     
     @discardableResult
     public func show(_ viewController: UIViewController) -> UIAlertController{
-        viewController.present(self, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            viewController.present(self, animated: true, completion: nil)
+        }
         return self
     }
     
     @discardableResult
     public func show() -> UIAlertController{
         PKCUtil.viewController { (viewController) in
-            viewController?.present(self, animated: true, completion: nil)
+            DispatchQueue.main.async {
+                viewController?.present(self, animated: true, completion: nil)
+            }
         }
         return self
     }
