@@ -9,6 +9,7 @@
 import Foundation
 
 public extension String {
+    
     //EUC-KR 인코딩
     public func euckrEncoding() -> String {
         let rawEncoding = CFStringConvertEncodingToNSStringEncoding(CFStringEncoding(CFStringEncodings.EUC_KR.rawValue))
@@ -20,8 +21,10 @@ public extension String {
                 || byte >= UInt8(ascii: "0") && byte <= UInt8(ascii: "9")
                 || byte == UInt8(ascii: "_") || byte == UInt8(ascii: ".")
                 || byte == UInt8(ascii: "-") {
-                return String(Character(UnicodeScalar(UInt32(byte))!))
-                
+                guard let unicode = UnicodeScalar(UInt32(byte)) else{
+                    return ""
+                }
+                return String(Character(unicode))
             } else if byte == UInt8(ascii: " ") {
                 return "+"
             } else {
@@ -30,6 +33,7 @@ public extension String {
             }.joined()
         return outputQuery
     }
+    
     
     
     //초성 자동완성을 위해 .plist가져오기
@@ -44,16 +48,20 @@ public extension String {
     }
     
     
+    
+    
     //로컬라이즈
     public var localized: String {
         return NSLocalizedString(self, tableName: nil, bundle: Bundle.main, value: "", comment: "")
     }
     
     
+    
     //로컬라이즈
     public func localizedWithComment(_ comment:String = "") -> String {
         return NSLocalizedString(self, tableName: nil, bundle: Bundle.main, value: "", comment: comment)
     }
+    
     
     
     //substring 추가
@@ -67,6 +75,8 @@ public extension String {
         return String(self[range])
     }
     
+    
+    
     //substring
     public func substring(from:Int = 0, length:Int) -> String {
         let range = self.index(self.startIndex, offsetBy: from)..<self.index(self.startIndex, offsetBy: from+length)
@@ -79,6 +89,8 @@ public extension String {
     }
     
     
+    
+    
     //url을 쿼리로 인코딩하기(특수문자를 등을 인코딩)
     public func queryValue() -> String{
         guard let value = self.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else{
@@ -86,6 +98,8 @@ public extension String {
         }
         return value
     }
+    
+    
     
     
     //json형으로 되어있는 스트링을 JSON으로 만들기
@@ -106,6 +120,8 @@ public extension String {
     
     
     
+    
+    
     //확장자 구하기
     public func getExt(_ defaultExt : ExtType = .png) -> ExtType{
         if self.uppercased().range(of: "PNG") != nil{
@@ -116,6 +132,8 @@ public extension String {
             return defaultExt
         }
     }
+    
+    
     
     
     //base64 문자열 디코딩
@@ -156,6 +174,8 @@ public extension String {
     }
     
     
+    
+    
     //초성 자동완성 글자 비교하기
     public func isContains(_ string: String, noneSearch: Bool = true) -> Bool{
         if string.count == 1 && string.makeInitail() == ""{
@@ -164,6 +184,8 @@ public extension String {
             return string.count == 0 ? noneSearch : self.contains(string)
         }
     }
+    
+    
     
     
     
@@ -176,5 +198,44 @@ public extension String {
             return nil
         }
         return NSRange(location: lower.encodedOffset, length: upper.encodedOffset - lower.encodedOffset)
+    }
+    
+    
+    
+    
+    
+    //글자로 클래스 만들기
+    public func convertToClass<T>() -> T.Type? {
+        return StringClassConverter<T>.convert(string: self)
+    }
+    public func viewController() -> UIViewController?{
+        guard let viewController: UIViewController.Type = self.convertToClass() else {
+            return nil
+        }
+        return viewController.init()
+    }
+    
+    
+    //스트링으로 나이 구하기
+    public func age(_ format: String) -> Double{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT+0:00")
+        if let date = dateFormatter.date(from: self){
+            return Double(date.age)
+        }
+        return 0
+    }
+}
+
+public class StringClassConverter<T> {
+    public static func convert(string className: String) -> T.Type? {
+        guard let nameSpace = Bundle.main.infoDictionary?["CFBundleExecutable"] as? String else {
+            return nil
+        }
+        guard let aClass: T.Type = NSClassFromString("\(nameSpace).\(className)") as? T.Type else {
+            return nil
+        }
+        return aClass
     }
 }

@@ -11,7 +11,7 @@ import Foundation
 public extension Array{
     
     //json형태를 string으로 만듬
-    public func JSONStringify(prettyPrinted:Bool = false) -> String{
+    public func JSONStringify(_ prettyPrinted: Bool = false) -> String{
         let options = prettyPrinted ? JSONSerialization.WritingOptions.prettyPrinted : JSONSerialization.WritingOptions(rawValue: 0)
         if JSONSerialization.isValidJSONObject(self) {
             do{
@@ -21,7 +21,6 @@ public extension Array{
                 }
             }catch let error as NSError {
                 print("JSON stringify error \(error)")
-                //Access error here
             }
         }
         return ""
@@ -45,6 +44,8 @@ public extension Array{
         return array
     }
 
+    
+    
     //랜덤 아이템
     public func random() -> Element{
         let random = Int(arc4random_uniform(UInt32(self.count)))

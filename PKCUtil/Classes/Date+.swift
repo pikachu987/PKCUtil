@@ -34,6 +34,8 @@ public extension Date{
     }
     
     
+    
+    
     //hour 숫자로 가져오기
     public func hourInt(_ calendar : Calendar = Calendar.current) -> Int?{
         let components = (calendar as NSCalendar).components(.hour, from: self)
@@ -57,6 +59,13 @@ public extension Date{
     }
     
     
+    
+    
+    
+    
+    
+    
+    
     //year 문자열로 가져오기
     public func year(_ calendar : Calendar = Calendar.current, defaultValue: String = "1991") -> String{
         guard let value = yearInt(calendar) else {
@@ -65,22 +74,12 @@ public extension Date{
         return "\(value)"
     }
     
-    
-    //한자리수면 0을 붙여주기
-    public func addDoubleDate(_ value: Int) -> String{
-        if value < 10{
-            return "0\(value)"
-        }else{
-            return "\(value)"
-        }
-    }
-    
     //month 문자열로 가져오기
     public func month(_ calendar : Calendar = Calendar.current, defaultValue: String = "06") -> String{
         guard let value = monthInt(calendar) else {
             return defaultValue
         }
-        return self.addDoubleDate(value)
+        return value < 10 ? "0\(value)" : "\(value)"
     }
     
     //day 문자열로 가져오기
@@ -88,7 +87,7 @@ public extension Date{
         guard let value = dayInt(calendar) else {
             return defaultValue
         }
-        return self.addDoubleDate(value)
+        return value < 10 ? "0\(value)" : "\(value)"
     }
     
     //hour 문자열로 가져오기
@@ -96,7 +95,7 @@ public extension Date{
         guard let value = hourInt(calendar) else {
             return defaultValue
         }
-        return self.addDoubleDate(value)
+        return value < 10 ? "0\(value)" : "\(value)"
     }
     
     //minute 문자열로 가져오기
@@ -104,7 +103,7 @@ public extension Date{
         guard let value = minuteInt(calendar) else {
             return defaultValue
         }
-        return self.addDoubleDate(value)
+        return value < 10 ? "0\(value)" : "\(value)"
     }
     
     //second 문자열로 가져오기
@@ -112,7 +111,16 @@ public extension Date{
         guard let value = secondInt(calendar) else {
             return defaultValue
         }
-        return self.addDoubleDate(value)
+        return value < 10 ? "0\(value)" : "\(value)"
+    }
+    
+    
+    
+    
+    //풀 데이트 뽑기
+    public func getFullDate(_ dateOf: String = "-", timeOf: String = ":") -> String{
+        let calendar = Calendar.current
+        return "\(getDate(calendar, of: dateOf)) \(getTime(calendar, of: timeOf))"
     }
     
     //default: yyyy-MM-dd 형식으로 날짜 뽑기
@@ -125,11 +133,10 @@ public extension Date{
         return "\(hour(calendar))\(of)\(minute(calendar))\(of)\(second(calendar))"
     }
     
-    //풀 데이트 뽑기
-    public func getFullDate() -> String{
-        let calendar = Calendar.current
-        return "\(getDate(calendar)) \(getTime(calendar))"
-    }
+    
+    
+    
+    
     
     //날짜,시간 Tuple로 하나하나 뽑기
     public func getDateTupleInt() -> (Int?, Int?, Int?, Int?, Int?, Int?){
@@ -142,14 +149,32 @@ public extension Date{
         let calendar = Calendar.current
         return (year(calendar), month(calendar), day(calendar), hour(calendar), minute(calendar), second(calendar))
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     //날짜 사이 구하기
-    public func daysBetweenDate(toDate: Date) -> Int {
+    public func daysBetweenDate(_ toDate: Date) -> Int {
         let components = Calendar.current.dateComponents([.day], from: self, to: toDate)
         return components.day ?? 0
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
     //금일과 같으면 시간, 다르면 날짜 보여주기
-    public func getDispalyRegDate(_ dateOf: String = ".", morning: String, afternoon: String) -> String{
+    public func getDispalyRegDate(_ dateOf: String = ".", morning: String = kSTRING.TITLE.MORNING, afternoon: String = kSTRING.TITLE.AFTERNOON) -> String{
         guard let hour = self.hourInt() else {
             return ""
         }
@@ -174,8 +199,12 @@ public extension Date{
     }
     
     
+    
+    
+    
+    
     //현재시간 밀리세컨드로
-    public var millisecondsSince1970:String {
+    public var millisecondsSince1970: String {
         let date = (self.timeIntervalSince1970 * 1000.0).rounded()
         let value = "\(date)"
         if let milliseconds = value.split(separator: ".").first{
@@ -187,4 +216,23 @@ public extension Date{
     public init(milliseconds:Int) {
         self = Date(timeIntervalSince1970: TimeInterval(milliseconds / 1000))
     }
+    
+    
+    
+    
+    
+    //나이 구하기
+    public var age: Int {
+        get {
+            let now = Date()
+            let calendar = Calendar.current
+            let ageComponents = calendar.dateComponents([.year], from: self, to: now)
+            guard let age = ageComponents.year else{
+                return 0
+            }
+            return age
+        }
+    }
+    
+    
 }

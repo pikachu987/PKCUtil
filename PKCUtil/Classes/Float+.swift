@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+
 public extension Float{
     
     public func abs() -> Float{
@@ -24,6 +26,8 @@ public extension Float{
         }
     }
 }
+
+
 
 public extension CGFloat{
     public func abs() -> CGFloat{

@@ -8,15 +8,21 @@
 
 import UIKit
 
+
 public extension UIViewController{
+    
+    
     //segue이동후 해당 핸들러 실행
-    public func performWithHandler(segue: String, completion: @escaping ()->()){
+    public func performWithHandler(_ segue: String, completion: @escaping ()->()){
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
         self.performSegue(withIdentifier: segue, sender: nil)
         CATransaction.commit()
     }
 }
+
+
+
 public extension UINavigationController {
     //pop이동후 해당 핸들러 실행
     public func popViewControllerWithHandler(_ animated: Bool, completion: @escaping ()->()) {

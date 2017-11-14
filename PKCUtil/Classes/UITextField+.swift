@@ -15,6 +15,15 @@ fileprivate class ActionSingleton{
 }
 
 public extension UITextField{
+    public convenience init(placeholder: String, text: String = ""){
+        self.init()
+        self.placeholder = placeholder
+        self.text = text
+        self.borderStyle = .roundedRect
+    }
+    
+    
+    
     //액션 추가
     private func addAction(action: @escaping (() -> Void)){
         let actionSingleton = ActionSingleton.shared
@@ -50,17 +59,3 @@ public extension UITextField{
         self.rightViewMode = UITextFieldViewMode.always
     }
 }
-
-
-
-
-//public extension UITextField{
-//    @IBInspectable var placeHolderColor: UIColor? {
-//        get {
-//            return self.placeHolderColor
-//        }
-//        set {
-//            self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "", attributes:[NSForegroundColorAttributeName: newValue!])
-//        }
-//    }
-//}

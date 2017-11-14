@@ -10,8 +10,9 @@ import UIKit
 
 
 //확장자
-public enum ExtType{
-    case jpeg, png
+public enum ExtType: String{
+    case jpeg = "jpeg"
+    case png = "png"
 }
 
 
@@ -23,7 +24,9 @@ public extension UIImage {
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         color.setFill()
         UIRectFill(rect)
-        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        guard let image: UIImage = UIGraphicsGetImageFromCurrentImageContext() else{
+            return UIImage()
+        }
         UIGraphicsEndImageContext()
         return image
     }
@@ -66,6 +69,9 @@ public extension UIImage {
         return scaledImage
     }
     
+    
+    
+    
     //이미지 화질 변경 시키기
     public func rePercentage(withPercentage percentage: CGFloat) -> UIImage? {
         let canvasSize = CGSize(width: size.width * percentage, height: size.height * percentage)
@@ -75,62 +81,13 @@ public extension UIImage {
         return UIGraphicsGetImageFromCurrentImageContext()
     }
     
-    //이미지 리사이즈 하기(width기반)
-    @available(iOS, message: "resize")
-    public func resizedPercentage(toWidth width: CGFloat) -> UIImage? {
-        let canvasSize = CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))
-        UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
-        defer { UIGraphicsEndImageContext() }
-        draw(in: CGRect(origin: .zero, size: canvasSize))
-        return UIGraphicsGetImageFromCurrentImageContext()
-    }
-    
-    
-    //이미지를 크기만큼 줄이기 -> resize
-    @available(iOS, message: "resize")
-    public func crop(_ to:CGSize) -> UIImage? {
-        guard let cgimage = self.cgImage else { return self }
-        let contextImage: UIImage = UIImage(cgImage: cgimage)
-        let contextSize: CGSize = contextImage.size
-        var posX: CGFloat = 0.0
-        var posY: CGFloat = 0.0
-        let cropAspect: CGFloat = to.width / to.height
-        var cropWidth: CGFloat = to.width
-        var cropHeight: CGFloat = to.height
-        if to.width > to.height { //Landscape
-            cropWidth = contextSize.width
-            cropHeight = contextSize.width / cropAspect
-            posY = (contextSize.height - cropHeight) / 2
-        } else if to.width < to.height { //Portrait
-            cropHeight = contextSize.height
-            cropWidth = contextSize.height * cropAspect
-            posX = (contextSize.width - cropWidth) / 2
-        } else { //Square
-            if contextSize.width >= contextSize.height {
-                cropHeight = contextSize.height
-                cropWidth = contextSize.height * cropAspect
-                posX = (contextSize.width - cropWidth) / 2
-            }else{ //Square on portrait
-                cropWidth = contextSize.width
-                cropHeight = contextSize.width / cropAspect
-                posY = (contextSize.height - cropHeight) / 2
-            }
-        }
-        let rect: CGRect = CGRect(x: posX, y: posY, width: cropWidth, height: cropHeight)
-        let imageRef: CGImage = contextImage.cgImage!.cropping(to: rect)!
-        let cropped: UIImage = UIImage(cgImage: imageRef, scale: self.scale, orientation: self.imageOrientation)
-        UIGraphicsBeginImageContextWithOptions(to, true, self.scale)
-        cropped.draw(in: CGRect(x: 0, y: 0, width: to.width, height: to.height))
-        let resized = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return resized
-    }
     
     
     //이미지 평균 컬러
     public func getPixelColor(pos: CGPoint) -> UIColor {
-        
-        let pixelData = self.cgImage!.dataProvider!.data
+        guard let pixelData = self.cgImage?.dataProvider?.data else{
+            return UIColor.clear
+        }
         let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
         
         let pixelInfo: Int = ((Int(self.size.width) * Int(pos.y)) + Int(pos.x)) * 4
@@ -190,6 +147,9 @@ public extension UIImage {
     public func renderingOriginal(_ imageColor: UIColor) -> UIImage?{
         return self.colorized(imageColor)?.withRenderingMode(.alwaysOriginal)
     }
+    
+    
+    
     
     //이미지 컬러 바꿈
     public func colorized(_ color : UIColor) -> UIImage? {

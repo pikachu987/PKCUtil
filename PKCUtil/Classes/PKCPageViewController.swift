@@ -71,11 +71,22 @@ public class PKCPageViewController: UIPageViewController{
     }
     
 }
+
+
+
+
+
+
 extension PKCPageViewController: UIPageViewControllerDelegate {
     public func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         notifyDelegateOfNewIndex()
     }
 }
+
+
+
+
+
 extension PKCPageViewController: UIPageViewControllerDataSource {
     public func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {

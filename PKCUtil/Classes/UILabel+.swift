@@ -10,6 +10,13 @@ import UIKit
 
 
 public extension UILabel{
+    public convenience init(text: String, font: UIFont = UIFont.systemFont(ofSize: 17), textColor: UIColor = .black){
+        self.init()
+        self.text = text
+        self.font = font
+        self.textColor = textColor
+    }
+    
     
     //라벨 높이 구하기
     public func requiredHeight(_ width: CGFloat) -> CGFloat{

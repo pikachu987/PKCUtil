@@ -9,6 +9,15 @@
 import UIKit
 
 public extension UIView {
+    
+    public convenience init(color: UIColor) {
+        self.init()
+        self.backgroundColor = color
+    }
+    
+    
+    
+    
     //해당 뷰를 이미지로 만들기
     public func imageWithView() -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.isOpaque, 0.0)
@@ -36,6 +45,8 @@ public extension UIView {
         superView.addConstraints(view_constraint_V)
     }
     
+    
+    
     @discardableResult
     public func addRectConstraints(_ superView: UIView, top: CGFloat = 0, bottom: CGFloat = 0, leading: CGFloat = 0, trailing: CGFloat = 0) -> [NSLayoutConstraint]{
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -48,6 +59,8 @@ public extension UIView {
         return [topConst, bottomConst, leadingConst, trailingConst]
     }
     
+    
+    
     @discardableResult
     public func horizontalLayout(left: CGFloat = 0, right: CGFloat = 0) -> [NSLayoutConstraint]{
         return NSLayoutConstraint.constraints(withVisualFormat: "H:|-\(left)-[view]-\(right)-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": self])
@@ -58,15 +71,17 @@ public extension UIView {
         return NSLayoutConstraint.constraints(withVisualFormat: "V:|-\(top)-[view]-\(bottom)-|", options: NSLayoutFormatOptions.alignAllLeading, metrics: nil, views: ["view": self])
     }
     
+    
+    
     //테두리 설정
-    public func setBorder(_ color: UIColor, width: CGFloat, radius: CGFloat){
+    public func border(_ color: UIColor, width: CGFloat, radius: CGFloat){
         self.layer.borderColor = color.cgColor
         self.layer.borderWidth = width
         self.layer.cornerRadius = radius
     }
     
     //패턴으로 테두리 설정
-    public func addDashedBorder(_ color : UIColor, lineWidth : CGFloat!, dashPattern : [NSNumber], cornerRadius : CGFloat) {
+    public func addDashedBorder(_ color : UIColor, lineWidth : CGFloat, dashPattern : [NSNumber], cornerRadius : CGFloat) {
         let shapeLayer:CAShapeLayer = CAShapeLayer()
         let frameSize = self.frame.size
         let shapeRect = CGRect(x: 0, y: 0, width: frameSize.width, height: frameSize.height)
@@ -98,38 +113,11 @@ public extension UIView {
         }
         return border
     }
+    
+    
+    
+    
+    
+    
+    
 }
-
-
-//@IBDesignable public extension UIView {
-//    @IBInspectable var borderColor:UIColor? {
-//        set {
-//            layer.borderColor = newValue!.cgColor
-//        }
-//        get {
-//            if let color = layer.borderColor {
-//                return UIColor(cgColor:color)
-//            }
-//            else {
-//                return nil
-//            }
-//        }
-//    }
-//    @IBInspectable var borderWidth:CGFloat {
-//        set {
-//            layer.borderWidth = newValue
-//        }
-//        get {
-//            return layer.borderWidth
-//        }
-//    }
-//    @IBInspectable var cornerRadius:CGFloat {
-//        set {
-//            layer.cornerRadius = newValue
-//            clipsToBounds = newValue > 0
-//        }
-//        get {
-//            return layer.cornerRadius
-//        }
-//    }
-//}

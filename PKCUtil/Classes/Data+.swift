@@ -16,7 +16,7 @@ public extension Data{
     }
     
     //Data클래스를 dictionary형태로 만듬
-    public func convertStringToDictionary() -> [String:AnyObject] {
+    public func convertStringToDictionary() -> [String: AnyObject] {
         do {
             guard let json = try JSONSerialization.jsonObject(with: self, options: []) as? [String:AnyObject] else {
                 return Dictionary()

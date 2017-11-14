@@ -9,18 +9,19 @@
 import UIKit
 import SafariServices
 
-open class PKCUtil{
+public class PKCUtil{
     //언어
-    open static var language : String{
+    public static var language : String{
         if let value = (Locale.current as NSLocale).object(forKey: NSLocale.Key.languageCode) as? String{
             return value
         }else{
             return "en"
         }
+        
     }
     
     //지역
-    open static var locale : String{
+    public static var locale : String{
         if let value = (Locale.current as NSLocale).object(forKey: NSLocale.Key.countryCode) as? String{
             return value
         }else{
@@ -29,7 +30,7 @@ open class PKCUtil{
     }
     
     //현재 버전
-    open static var nsVersion : String{
+    public static var nsVersion : String{
         if let value = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String{
             return value
         }else{
@@ -38,7 +39,7 @@ open class PKCUtil{
     }
     
     //디바이스 uuid
-    open static var deviceId : String{
+    public static var deviceId : String{
         if let value = UIDevice.current.identifierForVendor?.uuidString{
             return value
         }else{
@@ -47,7 +48,7 @@ open class PKCUtil{
     }
     
     //윈도우 초기화
-    open static func initWindow(_ bundle: Bundle, window: UIWindow?, storyboardName: String = "Main", identifier: String = "ViewController"){
+    public static func initWindow(_ bundle: Bundle, window: UIWindow?, storyboardName: String = "Main", identifier: String = "ViewController"){
         let storyBoard : UIStoryboard = UIStoryboard(name: storyboardName, bundle: bundle)
         let vc = storyBoard.instantiateViewController(withIdentifier: identifier)
         window?.rootViewController?.dismiss(animated: false, completion: nil)
@@ -56,29 +57,85 @@ open class PKCUtil{
     }
     
     
+    
+    //week
+    public static func week() -> [String]{
+        var array = [String]()
+        array.append(kSTRING.TITLE.MONDAY)
+        array.append(kSTRING.TITLE.MONDAY)
+        array.append(kSTRING.TITLE.TUESDAY)
+        array.append(kSTRING.TITLE.WEDNESDAY)
+        array.append(kSTRING.TITLE.THURSDAY)
+        array.append(kSTRING.TITLE.FRIDAY)
+        array.append(kSTRING.TITLE.SATURDAY)
+        return array
+    }
+    
+    
     // MARK: Reg
     
     //이메일
-    open static func isValidEmail(_ string: String) -> Bool {
+    public static func isValidEmail(_ string: String) -> Bool {
         let regEx = "^(?:(?:(?:(?: )*(?:(?:(?:\\t| )*\\r\\n)?(?:\\t| )+))+(?: )*)|(?: )+)?(?:(?:(?:[-A-Za-z0-9!#$%&’*+/=?^_'{|}~]+(?:\\.[-A-Za-z0-9!#$%&’*+/=?^_'{|}~]+)*)|(?:\"(?:(?:(?:(?: )*(?:(?:[!#-Z^-~]|\\[|\\])|(?:\\\\(?:\\t|[ -~]))))+(?: )*)|(?: )+)\"))(?:@)(?:(?:(?:[A-Za-z0-9](?:[-A-Za-z0-9]{0,61}[A-Za-z0-9])?)(?:\\.[A-Za-z0-9](?:[-A-Za-z0-9]{0,61}[A-Za-z0-9])?)*)|(?:\\[(?:(?:(?:(?:(?:[0-9]|(?:[1-9][0-9])|(?:1[0-9][0-9])|(?:2[0-4][0-9])|(?:25[0-5]))\\.){3}(?:[0-9]|(?:[1-9][0-9])|(?:1[0-9][0-9])|(?:2[0-4][0-9])|(?:25[0-5]))))|(?:(?:(?: )*[!-Z^-~])*(?: )*)|(?:[Vv][0-9A-Fa-f]+\\.[-A-Za-z0-9._~!$&'()*+,;=:]+))\\])))(?:(?:(?:(?: )*(?:(?:(?:\\t| )*\\r\\n)?(?:\\t| )+))+(?: )*)|(?: )+)?$"
         let emailTest = NSPredicate(format:"SELF MATCHES %@", regEx)
         return emailTest.evaluate(with: string)
     }
     
     //페이지
-    open static func isValidateUrl (_ string: String) -> Bool {
+    public static func isValidateUrl (_ string: String) -> Bool {
         let regEx = "((?:http|https)://)?(?:www\\.)?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?(/(?<=/)(?:[\\w\\d\\-./_]+)?)?"
         return NSPredicate(format: "SELF MATCHES %@", regEx).evaluate(with: string)
     }
     
     //한글인지
-    open static func isValidateKorean(_ string: String) -> Bool{
+    public static func isValidateKorean(_ string: String) -> Bool{
         let regEx = ".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*"
         return NSPredicate(format: "SELF MATCHES %@", regEx).evaluate(with: string)
     }
 
-    //SF사파리
-    open static func openSafari(_ path: String?, window: UIWindow?){
+
+
+    //뷰컨 찾기
+    public static func viewController(_ handler: ((UIViewController?) -> Void)){
+        self.viewController(UIApplication.shared.keyWindow?.rootViewController, handler: handler)
+    }
+    
+    public static func viewController(_ viewController: UIViewController?, handler: ((UIViewController?) -> Void)){
+        if let tabbarController = viewController as? UITabBarController{
+            self.viewController(tabbarController.selectedViewController, handler: handler)
+        }else if let navgationController = viewController as? UINavigationController{
+            self.viewController(navgationController.visibleViewController, handler: handler)
+        }else{
+            handler(viewController)
+        }
+    }
+    
+    //탭컨트롤러 찾기
+    func tabController(_ handler: ((UIViewController?) -> Void)){
+        self.tabController(UIApplication.shared.keyWindow?.rootViewController, handler: handler)
+    }
+    
+    private func tabController(_ viewController: UIViewController?, handler: ((UIViewController?) -> Void)){
+        if let navVC = viewController as? UINavigationController{
+            self.tabController(navVC.visibleViewController, handler: handler)
+        }else if let tabBarVC = viewController as? UITabBarController{
+            handler(tabBarVC)
+        }else if let viewController = viewController{
+            if viewController.presentingViewController != nil{
+                self.tabController(viewController.presentingViewController, handler: handler)
+            }else{
+                self.tabController(viewController.presentedViewController, handler: handler)
+            }
+        }else{
+            handler(nil)
+        }
+    }
+    
+    
+    
+    
+    //오픈 URL
+    public static func openUrl(_ path: String?){
         guard var urlPath = path else{
             return
         }
@@ -96,44 +153,29 @@ open class PKCUtil{
         }
         if #available(iOS 9.0, *) {
             let safariViewController = SFSafariViewController(url: url)
-            PKCUtil.checkViewController(window?.rootViewController) { (viewController) in
+            self.viewController({ (viewController) in
                 viewController?.present(safariViewController, animated: true, completion: nil)
-            }
+            })
         } else {
-            PKCUtil.openUrl(url)
-        }
-    }
-
-
-    private static func checkViewController(_ viewController: UIViewController?, handler: ((UIViewController?) -> Void)){
-        if let navVC = viewController as? UINavigationController{
-            PKCUtil.checkViewController(navVC.visibleViewController, handler: handler)
-        }else if let tabBarVC = viewController as? UITabBarController{
-            PKCUtil.checkViewController(tabBarVC.selectedViewController, handler: handler)
-        }else{
-            handler(viewController)
+            if #available(iOS 8.0, *) {
+                UIApplication.shared.openURL(url)
+            }else{
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
         }
     }
 
 
     //기본 브라우져로 열기
-    open static func openUrlPath(_ path: String?){
-        guard let urlPath = path, let url = URL(string: urlPath) else {
+    public static func openUrlPath(_ path: String?, prefix: String = "http://"){
+        guard let urlPath = path, var url = URL(string: urlPath) else {
             return
         }
-        self.openUrl(url)
-    }
-    
-    //기본 브라우져로 열기
-    open static func openUrl(_ url: URL){
-        var url = url
         if url.absoluteString == ""{
             return
         }
         if !url.absoluteString.hasPrefix("http://") && !url.absoluteString.hasPrefix("https://"){
-            if let value = URL(string: "http://\(url.absoluteString)"){
-                url = value
-            }
+            if let value = URL(string: "\(prefix)\(url.absoluteString)"){ url = value }
         }
         if !UIApplication.shared.canOpenURL(url){
             return
@@ -146,8 +188,13 @@ open class PKCUtil{
     }
     
     
+    
+    
+    
+    
+    
     //데이터 가져오기
-    open static func sessionDataTask(_ path: String, handler: @escaping ((Data) -> Void)){
+    public static func sessionDataTask(_ path: String, handler: @escaping ((Data) -> Void)){
         if let url = URL(string: path){
             URLSession(configuration: .default).dataTask(with: url) { (data, response, error) in
                 if error != nil{
@@ -163,7 +210,7 @@ open class PKCUtil{
     
     
     //좌표로 거리 계산
-    open static func getBetweenDistance(latitude : Double, longitude: Double, currentLatitude: Double, currentLongitude: Double) -> String{
+    public static func getBetweenDistance(latitude : Double, longitude: Double, currentLatitude: Double, currentLongitude: Double) -> String{
         let currentRadiansX = (currentLatitude*Double.pi)/180
         let currentRadiansY = (currentLongitude*Double.pi)/180
         let radiansX = (latitude*Double.pi)/180

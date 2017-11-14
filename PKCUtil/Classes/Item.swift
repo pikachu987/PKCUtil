@@ -9,6 +9,7 @@
 //import Foundation
 //import SwiftyJSON
 //
+//JSON에서 value 쉽게 빼오기
 //class Item {
 //    static func value(ofUrl: Any?) -> String{
 //        var url = ""
@@ -204,3 +205,4 @@
 //        return false
 //    }
 //}
+
