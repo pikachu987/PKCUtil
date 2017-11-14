@@ -21,7 +21,7 @@ public extension UIAlertController{
     
     
     @discardableResult
-    public static func alert(_ title: String = "", message: String, cancelString: String = kSTRING.TITLE.CANCEL, cancelHandler: (() -> Void)? = nil) -> UIAlertController{
+    public static func alertCancel(_ title: String = "", message: String, cancelString: String = kSTRING.TITLE.CANCEL, cancelHandler: (() -> Void)? = nil) -> UIAlertController{
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: cancelString, style: .cancel, handler: { (_) in
             cancelHandler?()
@@ -30,7 +30,7 @@ public extension UIAlertController{
     }
     
     @discardableResult
-    public static func alert(_ title: String = "", message: String, defaultString: String = kSTRING.TITLE.CONFIRM, defaultHandler: (() -> Void)? = nil) -> UIAlertController{
+    public static func alertConfirm(_ title: String = "", message: String, defaultString: String = kSTRING.TITLE.CONFIRM, defaultHandler: (() -> Void)? = nil) -> UIAlertController{
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: defaultString, style: .default, handler: { (_) in
             defaultHandler?()
@@ -66,7 +66,7 @@ public extension UIAlertController{
     }
     
     @discardableResult
-    public static func sheet(_ title: String = "", message: String, cancelString: String = kSTRING.TITLE.CANCEL, cancelHandler: (() -> Void)? = nil) -> UIAlertController{
+    public static func sheetCancel(_ title: String = "", message: String, cancelString: String = kSTRING.TITLE.CANCEL, cancelHandler: (() -> Void)? = nil) -> UIAlertController{
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: cancelString, style: .cancel, handler: { (_) in
             cancelHandler?()
@@ -75,7 +75,7 @@ public extension UIAlertController{
     }
     
     @discardableResult
-    public static func sheet(_ title: String = "", message: String, defaultString: String = kSTRING.TITLE.CONFIRM, defaultHandler: (() -> Void)? = nil) -> UIAlertController{
+    public static func sheetConfirm(_ title: String = "", message: String, defaultString: String = kSTRING.TITLE.CONFIRM, defaultHandler: (() -> Void)? = nil) -> UIAlertController{
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: defaultString, style: .default, handler: { (_) in
             defaultHandler?()
