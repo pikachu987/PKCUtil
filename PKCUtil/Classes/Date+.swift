@@ -235,4 +235,22 @@ public extension Date{
     }
     
     
+    
+    //년도 비교
+    public func equalYear(_ date: Date) -> Bool{
+        return self.year() == date.year() ? true : false
+    }
+    
+    //년도, 월 비교
+    public func equalMonth(_ date: Date) -> Bool{
+        return (self.equalYear(date) && self.month() == date.month()) ? true : false
+    }
+    
+    //년도, 월, 일 비교
+    public func equalDate(_ date: Date) -> Bool{
+        return (self.equalMonth(date) && self.day() == date.day()) ? true : false
+    }
+    
+    
+    
 }
