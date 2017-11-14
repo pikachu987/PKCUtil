@@ -17,11 +17,6 @@ class ViewController: UIViewController {
 
         print(UIDevice.current.modelNameType)
         print(PKCUtil.deviceId)
-        
-        print(kSTRING.TITLE.MONDAY)
-        kSTRING.TITLE.MONDAY = "ㅁㅁㅁㅁ"
-        print(kSTRING.TITLE.MONDAY)
-        print(kSTRING.TITLE.MOVE)
     }
 
     override func didReceiveMemoryWarning() {

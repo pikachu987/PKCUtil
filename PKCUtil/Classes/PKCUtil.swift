@@ -58,31 +58,6 @@ public class PKCUtil{
     
     
     
-    //week
-    public static func week() -> [String]{
-        var array = [String]()
-        array.append(kSTRING.TITLE.SUNDAY)
-        array.append(kSTRING.TITLE.MONDAY)
-        array.append(kSTRING.TITLE.TUESDAY)
-        array.append(kSTRING.TITLE.WEDNESDAY)
-        array.append(kSTRING.TITLE.THURSDAY)
-        array.append(kSTRING.TITLE.FRIDAY)
-        array.append(kSTRING.TITLE.SATURDAY)
-        return array
-    }
-    
-    //week
-    public static func weekM() -> [String]{
-        var array = [String]()
-        array.append(kSTRING.TITLE.MONDAY)
-        array.append(kSTRING.TITLE.TUESDAY)
-        array.append(kSTRING.TITLE.WEDNESDAY)
-        array.append(kSTRING.TITLE.THURSDAY)
-        array.append(kSTRING.TITLE.FRIDAY)
-        array.append(kSTRING.TITLE.SATURDAY)
-        array.append(kSTRING.TITLE.SUNDAY)
-        return array
-    }
     
     
     // MARK: Reg

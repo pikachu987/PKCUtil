@@ -174,7 +174,7 @@ public extension Date{
     
     
     //금일과 같으면 시간, 다르면 날짜 보여주기
-    public func getDispalyRegDate(_ dateOf: String = ".", morning: String = kSTRING.TITLE.MORNING, afternoon: String = kSTRING.TITLE.AFTERNOON) -> String{
+    public func getDispalyRegDate(_ dateOf: String = ".", morning: String, afternoon: String) -> String{
         guard let hour = self.hourInt() else {
             return ""
         }

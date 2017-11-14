@@ -21,7 +21,7 @@ public extension UIAlertController{
     
     
     @discardableResult
-    public static func alertCancel(_ title: String = "", message: String, cancelString: String = kSTRING.TITLE.CANCEL, cancelHandler: (() -> Void)? = nil) -> UIAlertController{
+    public static func alert(_ title: String = "", message: String, cancelString: String, cancelHandler: (() -> Void)? = nil) -> UIAlertController{
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: cancelString, style: .cancel, handler: { (_) in
             cancelHandler?()
@@ -30,7 +30,7 @@ public extension UIAlertController{
     }
     
     @discardableResult
-    public static func alertConfirm(_ title: String = "", message: String, defaultString: String = kSTRING.TITLE.CONFIRM, defaultHandler: (() -> Void)? = nil) -> UIAlertController{
+    public static func alert(_ title: String = "", message: String, defaultString: String, defaultHandler: (() -> Void)? = nil) -> UIAlertController{
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: defaultString, style: .default, handler: { (_) in
             defaultHandler?()
@@ -40,7 +40,7 @@ public extension UIAlertController{
     
     
     @discardableResult
-    public static func alert(_ title: String = "", message: String, defaultString: String = kSTRING.TITLE.CONFIRM, cancelString: String = kSTRING.TITLE.CANCEL, defaultHandler: @escaping (() -> Void), cancelHandler: (() -> Void)? = nil) -> UIAlertController{
+    public static func alert(_ title: String = "", message: String, defaultString: String, cancelString: String, defaultHandler: @escaping (() -> Void), cancelHandler: (() -> Void)? = nil) -> UIAlertController{
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: defaultString, style: .default, handler: { (_) in
             defaultHandler()
@@ -66,7 +66,7 @@ public extension UIAlertController{
     }
     
     @discardableResult
-    public static func sheetCancel(_ title: String = "", message: String, cancelString: String = kSTRING.TITLE.CANCEL, cancelHandler: (() -> Void)? = nil) -> UIAlertController{
+    public static func sheetCancel(_ title: String = "", message: String, cancelString: String, cancelHandler: (() -> Void)? = nil) -> UIAlertController{
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: cancelString, style: .cancel, handler: { (_) in
             cancelHandler?()
@@ -75,7 +75,7 @@ public extension UIAlertController{
     }
     
     @discardableResult
-    public static func sheetConfirm(_ title: String = "", message: String, defaultString: String = kSTRING.TITLE.CONFIRM, defaultHandler: (() -> Void)? = nil) -> UIAlertController{
+    public static func sheetConfirm(_ title: String = "", message: String, defaultString: String, defaultHandler: (() -> Void)? = nil) -> UIAlertController{
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: defaultString, style: .default, handler: { (_) in
             defaultHandler?()
@@ -85,7 +85,7 @@ public extension UIAlertController{
     
     
     @discardableResult
-    public static func sheet(_ title: String = "", message: String, defaultString: String = kSTRING.TITLE.CONFIRM, cancelString: String = kSTRING.TITLE.CANCEL, defaultHandler: @escaping (() -> Void), cancelHandler: (() -> Void)? = nil) -> UIAlertController{
+    public static func sheet(_ title: String = "", message: String, defaultString: String, cancelString: String, defaultHandler: @escaping (() -> Void), cancelHandler: (() -> Void)? = nil) -> UIAlertController{
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: defaultString, style: .default, handler: { (_) in
             defaultHandler()
@@ -110,88 +110,18 @@ public extension UIAlertController{
     }
     
     @discardableResult
-    public func add(_ title: String, style: UIAlertActionStyle = .default, handler: (() -> Void)? = nil) -> UIAlertController{
-        return self.action(title, style: style, handler: handler)
+    public func add(_ title: String, handler: (() -> Void)? = nil) -> UIAlertController{
+        return self.action(title, style: .default, handler: handler)
     }
     
     @discardableResult
-    public func confirm(_ handler: (() -> Void)? = nil) -> UIAlertController{
-        return self.action(kSTRING.TITLE.CONFIRM, style: .default, handler: handler)
+    public func cancel(_ title: String, handler: (() -> Void)? = nil) -> UIAlertController{
+        return self.action(title, style: .cancel, handler: handler)
     }
     
     @discardableResult
-    public func cancel(_ handler: (() -> Void)? = nil) -> UIAlertController{
-        return self.action(kSTRING.TITLE.CANCEL, style: .cancel, handler: handler)
-    }
-    
-    @discardableResult
-    public func destructive(_ handler: (() -> Void)? = nil) -> UIAlertController{
-        return self.action(kSTRING.TITLE.DELETE, style: .destructive, handler: handler)
-    }
-    
-    @discardableResult
-    public func yes(_ handler: (() -> Void)? = nil) -> UIAlertController{
-        return self.action(kSTRING.TITLE.YES, style: .default, handler: handler)
-    }
-    
-    @discardableResult
-    public func move(_ handler: (() -> Void)? = nil) -> UIAlertController{
-        return self.action(kSTRING.TITLE.MOVE, style: .default, handler: handler)
-    }
-    
-    @discardableResult
-    public func genderM(_ handler: (() -> Void)? = nil) -> UIAlertController{
-        return self.action(kSTRING.TITLE.GENDERM, style: .default, handler: handler)
-    }
-    
-    @discardableResult
-    public func genderF(_ handler: (() -> Void)? = nil) -> UIAlertController{
-        return self.action(kSTRING.TITLE.GENDERF, style: .default, handler: handler)
-    }
-    
-    @discardableResult
-    public func complete(_ handler: (() -> Void)? = nil) -> UIAlertController{
-        return self.action(kSTRING.TITLE.COMPLETE, style: .default, handler: handler)
-    }
-    
-    @discardableResult
-    public func setting(_ handler: (() -> Void)? = nil) -> UIAlertController{
-        return self.action(kSTRING.TITLE.SETTING, style: .default, handler: handler)
-    }
-    
-    @discardableResult
-    public func start(_ handler: (() -> Void)? = nil) -> UIAlertController{
-        return self.action(kSTRING.TITLE.START, style: .default, handler: handler)
-    }
-    
-    @discardableResult
-    public func exit(_ handler: (() -> Void)? = nil) -> UIAlertController{
-        return self.action(kSTRING.TITLE.EXIT, style: .default, handler: handler)
-    }
-    
-    @discardableResult
-    public func save(_ handler: (() -> Void)? = nil) -> UIAlertController{
-        return self.action(kSTRING.TITLE.SAVE, style: .default, handler: handler)
-    }
-    
-    @discardableResult
-    public func share(_ handler: (() -> Void)? = nil) -> UIAlertController{
-        return self.action(kSTRING.TITLE.SHARE, style: .default, handler: handler)
-    }
-    
-    @discardableResult
-    public func camera(_ handler: (() -> Void)? = nil) -> UIAlertController{
-        return self.action(kSTRING.TITLE.CAMERA, style: .default, handler: handler)
-    }
-    
-    @discardableResult
-    public func gallery(_ handler: (() -> Void)? = nil) -> UIAlertController{
-        return self.action(kSTRING.TITLE.GALLERY, style: .default, handler: handler)
-    }
-    
-    @discardableResult
-    public func search(_ handler: (() -> Void)? = nil) -> UIAlertController{
-        return self.action(kSTRING.TITLE.SEARCH, style: .default, handler: handler)
+    public func destructive(_ title: String, handler: (() -> Void)? = nil) -> UIAlertController{
+        return self.action(title, style: .destructive, handler: handler)
     }
     
     
@@ -223,34 +153,10 @@ public extension UIAlertController{
     
     
     //permission
-    
-    //권한 denied
     @discardableResult
-    public static func permissionDenied(_ message: String, doMove: String = kSTRING.TITLE.DO.MOVE, cancel: String = kSTRING.TITLE.CANCEL) -> UIAlertController{
-        let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: doMove, style: .default, handler: { (_) in
-            guard let bundleIdentifier = Bundle.main.bundleIdentifier else{
-                return
-            }
-            guard let url = URL(string: "\(UIApplicationOpenSettingsURLString)\(bundleIdentifier)") else{
-                return
-            }
-            if !UIApplication.shared.canOpenURL(url){
-                return
-            }
-            if #available(iOS 8.0, *) {
-                UIApplication.shared.openURL(url)
-            }else{
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            }
-        }))
-        alertController.addAction(UIAlertAction(title: cancel, style: .cancel, handler: nil))
-        return alertController
-    }
-    
-    @discardableResult
-    public func addSetting(_ doMove: String = kSTRING.TITLE.DO.MOVE) -> UIAlertController{
-        self.addAction(UIAlertAction(title: doMove, style: .default, handler: { (_) in
+    public func openSetting(_ title: String, handler: (() -> Void)? = nil) -> UIAlertController{
+        self.addAction(UIAlertAction(title: title, style: .default, handler: { (_) in
+            handler?()
             guard let bundleIdentifier = Bundle.main.bundleIdentifier else{
                 return
             }
