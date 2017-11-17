@@ -9,20 +9,22 @@ import Foundation
 import UIKit
 
 public struct AppVersion{
-    var url: String
-    var currentVersion: String
-    var storeVersion: String
-    var isUpdate: Bool
+    public var url: String
+    public var currentVersion: String
+    public var storeVersion: String
+    public var isUpdate: Bool
 }
 
 
 public class AppStore: NSObject {
     
-    public static func version(_ handler: @escaping (AppVersion) -> Void){
+    public static func versionCheck(_ identifier: String? = nil, handler: @escaping (AppVersion) -> Void){
         //현재 버전
         let currentVer = PKCUtil.nsVersion
+        
+        let bundleIdentifierValue = identifier ?? Bundle.main.bundleIdentifier
         //통신할 앱서버
-        guard let bundleIdentifier = Bundle.main.bundleIdentifier, let url = NSURL(string: "http://itunes.apple.com/lookup?bundleId=\(bundleIdentifier)") else{
+        guard let bundleIdentifier = bundleIdentifierValue, let url = NSURL(string: "http://itunes.apple.com/lookup?bundleId=\(bundleIdentifier)") else{
             return
         }
         
@@ -82,3 +84,4 @@ public class AppStore: NSObject {
         task.resume()
     }
 }
+

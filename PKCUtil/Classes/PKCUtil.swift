@@ -122,8 +122,8 @@ public class PKCUtil{
     
     
     
-    //오픈 URL
-    public static func openUrl(_ path: String?){
+    //오픈 사파리 URL
+    public static func openSafariUrl(_ path: String?){
         guard var urlPath = path else{
             return
         }
@@ -152,10 +152,28 @@ public class PKCUtil{
             }
         }
     }
-
-
+    
+    
     //기본 브라우져로 열기
-    public static func openUrlPath(_ path: String?, prefix: String = "http://"){
+    public static func openDefaultUrl(_ path: String?){
+        guard let urlPath = path, let url = URL(string: urlPath) else {
+            return
+        }
+        if url.absoluteString == ""{
+            return
+        }
+        if !UIApplication.shared.canOpenURL(url){
+            return
+        }
+        if #available(iOS 8.0, *) {
+            UIApplication.shared.openURL(url)
+        }else{
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    
+    //기본 브라우져로 열기 http확인
+    public static func openDefaultHttpUrl(_ path: String?, prefix: String = "http://"){
         guard let urlPath = path, var url = URL(string: urlPath) else {
             return
         }

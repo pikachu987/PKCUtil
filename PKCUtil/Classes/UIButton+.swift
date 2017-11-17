@@ -8,7 +8,7 @@
 import UIKit
 
 public extension UIButton{
-    public convenience init(title: String, font: UIFont = UIFont.systemFont(ofSize: 15), titleColor: UIColor = UIColor.blue, backgroundColor: UIColor = UIColor.clear){
+    public convenience init(title: String, font: UIFont, titleColor: UIColor = UIColor.blue, backgroundColor: UIColor = UIColor.clear){
         self.init()
         self.setTitle(title, for: .normal)
         self.titleLabel?.font = font

@@ -33,4 +33,26 @@ public extension Int {
     }
     
     
+    
+    public var double: Double{
+        get{
+            return Double(self)
+        }
+    }
+    public var float: Float{
+        get{
+            return Float(self)
+        }
+    }
+    public var cgFloat: CGFloat{
+        get{
+            return CGFloat(self)
+        }
+    }
+    public var string: String{
+        get{
+            return String(self)
+        }
+    }
+    
 }

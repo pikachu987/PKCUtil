@@ -64,4 +64,26 @@ public extension Double{
             return "0"
         }
     }
+    
+    
+    public var int: Int{
+        get{
+            return Int(self)
+        }
+    }
+    public var float: Float{
+        get{
+            return Float(self)
+        }
+    }
+    public var cgFloat: CGFloat{
+        get{
+            return CGFloat(self)
+        }
+    }
+    public var string: String{
+        get{
+            return String(self)
+        }
+    }
 }

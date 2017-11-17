@@ -29,6 +29,7 @@
 		6147F0EA1FBAE1FC00C85E9D /* UIAlertController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6147F0E91FBAE1FC00C85E9D /* UIAlertController+.swift */; };
 		6147F0EE1FBAE61100C85E9D /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6147F0ED1FBAE61100C85E9D /* UIButton+.swift */; };
 		6147F0F21FBAEAF700C85E9D /* VersionCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6147F0F11FBAEAF700C85E9D /* VersionCheck.swift */; };
+		6192BAA41FBE8A0500EEA6D3 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6192BAA31FBE8A0400EEA6D3 /* NSObject+.swift */; };
 		61C15F4A1F8F2A7000E46DC7 /* UISearchBar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C15F481F8F2A7000E46DC7 /* UISearchBar+.swift */; };
 		61C15F4B1F8F2A7000E46DC7 /* NSMutableAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C15F491F8F2A7000E46DC7 /* NSMutableAttributedString+.swift */; };
 		61E4CCF91FB3188400044FC5 /* RGBHSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4CCF81FB3188300044FC5 /* RGBHSV.swift */; };
@@ -95,6 +96,7 @@
 		6147F0E91FBAE1FC00C85E9D /* UIAlertController+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIAlertController+.swift"; path = "PKCUtil/Classes/UIAlertController+.swift"; sourceTree = "<group>"; };
 		6147F0ED1FBAE61100C85E9D /* UIButton+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIButton+.swift"; path = "PKCUtil/Classes/UIButton+.swift"; sourceTree = "<group>"; };
 		6147F0F11FBAEAF700C85E9D /* VersionCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VersionCheck.swift; path = PKCUtil/Classes/VersionCheck.swift; sourceTree = "<group>"; };
+		6192BAA31FBE8A0400EEA6D3 /* NSObject+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSObject+.swift"; path = "PKCUtil/Classes/NSObject+.swift"; sourceTree = "<group>"; };
 		61C15F481F8F2A7000E46DC7 /* UISearchBar+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UISearchBar+.swift"; path = "PKCUtil/Classes/UISearchBar+.swift"; sourceTree = "<group>"; };
 		61C15F491F8F2A7000E46DC7 /* NSMutableAttributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "NSMutableAttributedString+.swift"; path = "PKCUtil/Classes/NSMutableAttributedString+.swift"; sourceTree = "<group>"; };
 		61E4CCF81FB3188300044FC5 /* RGBHSV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGBHSV.swift; path = PKCUtil/Classes/RGBHSV.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				AB2D4F4AFBBD8FE9514A6058B238BAA4 /* UIView+.swift */,
 				61C15F481F8F2A7000E46DC7 /* UISearchBar+.swift */,
 				6147F0F11FBAEAF700C85E9D /* VersionCheck.swift */,
+				6192BAA31FBE8A0400EEA6D3 /* NSObject+.swift */,
 				6E89894BFDB5CD1C391D2DB688A3990E /* Support Files */,
 			);
 			name = PKCUtil;
@@ -453,6 +456,7 @@
 				24E94490A37B19B2CAFC6D8F34ED866A /* Date+.swift in Sources */,
 				3207E182AECB7190768207A15E66598E /* Dictionary+.swift in Sources */,
 				F0D8C284F9C713A0D33E9635A966DC08 /* DismissMenuAnimator.swift in Sources */,
+				6192BAA41FBE8A0500EEA6D3 /* NSObject+.swift in Sources */,
 				248CD88EB50814E572EBBA6B6CD45E0C /* Double+.swift in Sources */,
 				82B598BB770B8D67D0B7BFC04AA005BE /* Float+.swift in Sources */,
 				A4E73B5A0DBA67173F73FADC78A09DFE /* Int+.swift in Sources */,

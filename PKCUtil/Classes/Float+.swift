@@ -25,6 +25,27 @@ public extension Float{
             return "0"
         }
     }
+    
+    public var dou: Double{
+        get{
+            return Double(self)
+        }
+    }
+    public var int: Int{
+        get{
+            return Int(self)
+        }
+    }
+    public var cgFloat: CGFloat{
+        get{
+            return CGFloat(self)
+        }
+    }
+    public var string: String{
+        get{
+            return String(self)
+        }
+    }
 }
 
 
@@ -32,6 +53,27 @@ public extension Float{
 public extension CGFloat{
     public func abs() -> CGFloat{
         return self > 0 ? self : -self
+    }
+    
+    public var dou: Double{
+        get{
+            return Double(self)
+        }
+    }
+    public var float: Float{
+        get{
+            return Float(self)
+        }
+    }
+    public var int: Int{
+        get{
+            return Int(self)
+        }
+    }
+    public var string: String{
+        get{
+            return "\(self)"
+        }
     }
 }
 

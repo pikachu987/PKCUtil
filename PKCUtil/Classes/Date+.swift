@@ -253,4 +253,34 @@ public extension Date{
     
     
     
+    
+    //포맷으로 데이터 가져오기
+    public static func format(_ date: String?, foramt: String, timeZone: String = "GMT+0:00") -> Date?{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = foramt
+        dateFormatter.timeZone = TimeZone(abbreviation: timeZone)
+        return dateFormatter.date(from: date ?? "")
+    }
+    public static func format(_ date: String?, foramt: String, timeZone: TimeZone) -> Date?{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = foramt
+        dateFormatter.timeZone = timeZone
+        return dateFormatter.date(from: date ?? "")
+    }
+    public static func format(_ date: String?, foramt: String, timeZone: String = "GMT+0:00", locale: Locale?) -> Date?{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = foramt
+        dateFormatter.timeZone = TimeZone(abbreviation: timeZone)
+        dateFormatter.locale = locale
+        return dateFormatter.date(from: date ?? "")
+    }
+    public static func format(_ date: String?, foramt: String, timeZone: TimeZone, locale: Locale?) -> Date?{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = foramt
+        dateFormatter.timeZone = timeZone
+        dateFormatter.locale = locale
+        return dateFormatter.date(from: date ?? "")
+    }
+    
+    
 }
