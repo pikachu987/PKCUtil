@@ -128,6 +128,30 @@ public extension UIAlertController{
     
     
     
+    @discardableResult
+    public func appendTextField(_ handler: ((UITextField) -> Void)? = nil) -> UIAlertController{
+        self.addTextField { (textField) in
+            handler?(textField)
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func messageFont(_ font: UIFont) -> UIAlertController{
+        let attributedString = NSAttributedString(string: self.message ?? "", attributes: [NSAttributedStringKey.font : font])
+        self.setValue(attributedString, forKey: "attributedMessage")
+        return self
+    }
+    
+    @discardableResult
+    public func titleFont(_ font: UIFont) -> UIAlertController{
+        let attributedString = NSAttributedString(string: self.title ?? "", attributes: [NSAttributedStringKey.font : font])
+        self.setValue(attributedString, forKey: "attributedTitle")
+        return self
+    }
+    
+    
+    
     
     //show
     
@@ -148,6 +172,7 @@ public extension UIAlertController{
         }
         return self
     }
+    
     
     
     

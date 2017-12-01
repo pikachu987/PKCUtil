@@ -48,7 +48,6 @@
 		CFB9C3FF462BEC701AD362816E8A02D1 /* PKCPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1C82BD73876E4B1C7BAEA0E8B7A712 /* PKCPageViewController.swift */; };
 		D3BA49ECED7F78D59FF0B82E0BBB6687 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2274BE0132D30BB9F84F7BE9AA9CB33 /* Interactor.swift */; };
 		D6DEC15E647EC2469891363A3E1CAA83 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		D832E0B8B93DFA9D7DD362D373FEA50C /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B91F7EAEB25ABA49AFA4F2BF05F1E05 /* Storage.swift */; };
 		DF6A7D2F07DA9B7A7D55C6D204540C70 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983BD59310EE3B7ACF31B536B1577D01 /* UITextView+.swift */; };
 		E2E3CBA8643F2B8629A838EFD1E65DFD /* UICollectionViewLayout+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D38CC5C00BEB49C14428977FCBEE454 /* UICollectionViewLayout+.swift */; };
 		E57E972C838675C1BEFEBE70A729024C /* Pods-PKCUtil_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA22D9A494FE0E07DBA39D26EBD653E /* Pods-PKCUtil_Tests-dummy.m */; };
@@ -113,7 +112,6 @@
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9431DABBE1AA054B102DCAD738968528 /* Pods-PKCUtil_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PKCUtil_Example-resources.sh"; sourceTree = "<group>"; };
 		983BD59310EE3B7ACF31B536B1577D01 /* UITextView+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UITextView+.swift"; path = "PKCUtil/Classes/UITextView+.swift"; sourceTree = "<group>"; };
-		9B91F7EAEB25ABA49AFA4F2BF05F1E05 /* Storage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Storage.swift; path = PKCUtil/Classes/Storage.swift; sourceTree = "<group>"; };
 		A344F8A9C9355EEA4F67AC3B502447D3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A48460F940A7B841D1E93BF2CD0700D3 /* UIImageView+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImageView+.swift"; path = "PKCUtil/Classes/UIImageView+.swift"; sourceTree = "<group>"; };
 		A8928A36DDCF5C49F7B8F039E4D037CB /* UIDevice+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIDevice+.swift"; path = "PKCUtil/Classes/UIDevice+.swift"; sourceTree = "<group>"; };
@@ -292,7 +290,6 @@
 				AA829254AFA18CFA710B98D5F326DFCB /* Float+.swift */,
 				2C0EE0AF636020CE19B8843E9A2B97BB /* Int+.swift */,
 				2F829978D1E95CF74E82CFC3CA276E52 /* KoreanInitial.plist */,
-				9B91F7EAEB25ABA49AFA4F2BF05F1E05 /* Storage.swift */,
 				B9EEC2477D1EB3A8EE15179DCBD20C7C /* String+.swift */,
 				61C15F491F8F2A7000E46DC7 /* NSMutableAttributedString+.swift */,
 				61E4CCF81FB3188300044FC5 /* RGBHSV.swift */,
@@ -470,7 +467,6 @@
 				5E1DC4269B35B023B7ED190E4A42D1ED /* PKCUtil-dummy.m in Sources */,
 				BDE1E89FBB432BE77583CA46A4C7925E /* PKCUtil.swift in Sources */,
 				05EA168B0FB4ED7DC59672296CCB6AFD /* PresentMenuAnimator.swift in Sources */,
-				D832E0B8B93DFA9D7DD362D373FEA50C /* Storage.swift in Sources */,
 				450D8EB988E39F9E7FB39D1D8ED9FCBA /* String+.swift in Sources */,
 				88D7D781F0E97D776C9AA10D3D47754C /* UIBarButton+.swift in Sources */,
 				E2E3CBA8643F2B8629A838EFD1E65DFD /* UICollectionViewLayout+.swift in Sources */,

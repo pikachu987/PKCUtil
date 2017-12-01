@@ -123,7 +123,7 @@ public class PKCUtil{
     
     
     //오픈 사파리 URL
-    public static func openSafariUrl(_ path: String?){
+    public static func openSafariUrl(_ path: String?, viewController: UIViewController? = nil){
         guard var urlPath = path else{
             return
         }
@@ -141,9 +141,13 @@ public class PKCUtil{
         }
         if #available(iOS 9.0, *) {
             let safariViewController = SFSafariViewController(url: url)
-            self.viewController({ (viewController) in
-                viewController?.present(safariViewController, animated: true, completion: nil)
-            })
+            if let viewController = viewController{
+                viewController.present(safariViewController, animated: true, completion: nil)
+            }else{
+                self.viewController({ (viewController) in
+                    viewController?.present(safariViewController, animated: true, completion: nil)
+                })
+            }
         } else {
             if #available(iOS 8.0, *) {
                 UIApplication.shared.openURL(url)
