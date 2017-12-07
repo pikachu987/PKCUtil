@@ -102,25 +102,25 @@ public extension UIAlertController{
     
     //action
     
-    private func action(_ title: String, style: UIAlertActionStyle, handler: (() -> Void)? = nil) -> UIAlertController{
+    private func action(_ title: String, style: UIAlertActionStyle, handler: ((UIAlertController) -> Void)? = nil) -> UIAlertController{
         self.addAction(UIAlertAction(title: title, style: .default, handler: { (_) in
-            handler?()
+            handler?(self)
         }))
         return self
     }
     
     @discardableResult
-    public func add(_ title: String, handler: (() -> Void)? = nil) -> UIAlertController{
+    public func add(_ title: String, handler: ((UIAlertController) -> Void)? = nil) -> UIAlertController{
         return self.action(title, style: .default, handler: handler)
     }
     
     @discardableResult
-    public func cancel(_ title: String, handler: (() -> Void)? = nil) -> UIAlertController{
+    public func cancel(_ title: String, handler: ((UIAlertController) -> Void)? = nil) -> UIAlertController{
         return self.action(title, style: .cancel, handler: handler)
     }
     
     @discardableResult
-    public func destructive(_ title: String, handler: (() -> Void)? = nil) -> UIAlertController{
+    public func destructive(_ title: String, handler: ((UIAlertController) -> Void)? = nil) -> UIAlertController{
         return self.action(title, style: .destructive, handler: handler)
     }
     
