@@ -14,8 +14,9 @@ public extension UISearchBar{
         }
         return textField
     }
-    public static func headerViewSearchBar(_ placeHolder: String) -> UISearchBar{
+    public static func headerViewSearchBar(_ placeHolder: String, tintColor: UIColor = .black) -> UISearchBar{
         let searchBar = UISearchBar(frame: CGRect(x: 50, y: 26, width: UIScreen.main.bounds.width-66, height: 28))
+        searchBar.tintColor = tintColor
         searchBar.placeholder = placeHolder
         searchBar.enablesReturnKeyAutomatically = false
         return searchBar
