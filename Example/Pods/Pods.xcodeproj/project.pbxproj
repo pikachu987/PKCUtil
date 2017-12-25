@@ -10,6 +10,7 @@
 		01195919CFE17E31930B5A127CC66827 /* UIDevice+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8928A36DDCF5C49F7B8F039E4D037CB /* UIDevice+.swift */; };
 		03BDD6FA8A3C2468F94AE54E892E40A8 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3646CC2BADA015C73C76D00FC502158A /* UILabel+.swift */; };
 		05EA168B0FB4ED7DC59672296CCB6AFD /* PresentMenuAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4045F974851C7CDECA107F6F481C56E /* PresentMenuAnimator.swift */; };
+		0C26D1241FF09DD200A64AC5 /* UITabBarItem+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C26D1231FF09DD200A64AC5 /* UITabBarItem+.swift */; };
 		16BBECA0E885E9A9D868819B9BE8A9ED /* PKCUtil-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A906427140D371B44B28AC87E5002461 /* PKCUtil-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1D97A2482C1A4A50CDF7290282F7070C /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2D4F4AFBBD8FE9514A6058B238BAA4 /* UIView+.swift */; };
 		248CD88EB50814E572EBBA6B6CD45E0C /* Double+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48AFD02E4A2893E09D1DECAD5556C14 /* Double+.swift */; };
@@ -69,6 +70,7 @@
 /* Begin PBXFileReference section */
 		076A1176DC62193E9585BB27AFD54F13 /* PKCUtil.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PKCUtil.xcconfig; sourceTree = "<group>"; };
 		0A9D0716A9EA280A01020BCAEA1AE83D /* Pods-PKCUtil_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PKCUtil_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		0C26D1231FF09DD200A64AC5 /* UITabBarItem+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITabBarItem+.swift"; path = "PKCUtil/Classes/UITabBarItem+.swift"; sourceTree = "<group>"; };
 		189AEF7024EECB92FB6DD71504A0D44F /* CoreDataHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CoreDataHelper.swift; path = PKCUtil/Classes/CoreDataHelper.swift; sourceTree = "<group>"; };
 		225D5308966AB452A460C15A87045428 /* UIToolbar+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIToolbar+.swift"; path = "PKCUtil/Classes/UIToolbar+.swift"; sourceTree = "<group>"; };
 		26985F23BE2F495A73CCEA50543948C3 /* Pods-PKCUtil_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PKCUtil_Example-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				61C15F481F8F2A7000E46DC7 /* UISearchBar+.swift */,
 				6147F0F11FBAEAF700C85E9D /* VersionCheck.swift */,
 				6192BAA31FBE8A0400EEA6D3 /* NSObject+.swift */,
+				0C26D1231FF09DD200A64AC5 /* UITabBarItem+.swift */,
 				6E89894BFDB5CD1C391D2DB688A3990E /* Support Files */,
 			);
 			name = PKCUtil;
@@ -474,6 +477,7 @@
 				B506083E1CF2BDFA395E387F8BCAA541 /* UIController+.swift in Sources */,
 				01195919CFE17E31930B5A127CC66827 /* UIDevice+.swift in Sources */,
 				6147F0EE1FBAE61100C85E9D /* UIButton+.swift in Sources */,
+				0C26D1241FF09DD200A64AC5 /* UITabBarItem+.swift in Sources */,
 				6147F0EA1FBAE1FC00C85E9D /* UIAlertController+.swift in Sources */,
 				3EE9883680C4A6FDDCDBD898117D2626 /* UIFont+.swift in Sources */,
 				3252AD46487E0822598E2F2EBC6A7138 /* UIImage+.swift in Sources */,
