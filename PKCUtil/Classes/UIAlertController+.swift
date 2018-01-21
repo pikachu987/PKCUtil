@@ -8,6 +8,20 @@
 import UIKit
 
 public extension UIAlertController{
+//    @discardableResult
+//    public func messageFont(_ font: UIFont) -> UIAlertController{
+//        let attributedString = NSAttributedString(string: self.message ?? "", attributes: [NSAttributedStringKey.font : font])
+//        self.setValue(attributedString, forKey: "attributedMessage")
+//        return self
+//    }
+//
+//    @discardableResult
+//    public func titleFont(_ font: UIFont) -> UIAlertController{
+//        let attributedString = NSAttributedString(string: self.title ?? "", attributes: [NSAttributedStringKey.font : font])
+//        self.setValue(attributedString, forKey: "attributedTitle")
+//        return self
+//    }
+    
     
     
     //alert
@@ -103,7 +117,7 @@ public extension UIAlertController{
     //action
     
     private func action(_ title: String, style: UIAlertActionStyle, handler: ((UIAlertController) -> Void)? = nil) -> UIAlertController{
-        self.addAction(UIAlertAction(title: title, style: .default, handler: { (_) in
+        self.addAction(UIAlertAction(title: title, style: style, handler: { (_) in
             handler?(self)
         }))
         return self
@@ -136,19 +150,7 @@ public extension UIAlertController{
         return self
     }
     
-    @discardableResult
-    public func messageFont(_ font: UIFont) -> UIAlertController{
-        let attributedString = NSAttributedString(string: self.message ?? "", attributes: [NSAttributedStringKey.font : font])
-        self.setValue(attributedString, forKey: "attributedMessage")
-        return self
-    }
     
-    @discardableResult
-    public func titleFont(_ font: UIFont) -> UIAlertController{
-        let attributedString = NSAttributedString(string: self.title ?? "", attributes: [NSAttributedStringKey.font : font])
-        self.setValue(attributedString, forKey: "attributedTitle")
-        return self
-    }
     
     
     
