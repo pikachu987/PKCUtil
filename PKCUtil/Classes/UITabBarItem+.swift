@@ -14,4 +14,25 @@ public extension UITabBarItem{
         self.imageInsets = UIEdgeInsets.zero
         self.title = title
     }
+    
+    public func setEntity(_ title: String, imageName: String, color: UIColor){
+        self.image = UIImage(named: imageName)?.renderingOriginal(color)
+        self.selectedImage = UIImage(named: imageName)?.renderingOriginal(color)
+        self.imageInsets = UIEdgeInsets.zero
+        self.title = title
+    }
+    
+    public func setEntity(_ title: String, imageName: String, color: UIColor, selectedColor: UIColor){
+        self.image = UIImage(named: imageName)?.renderingOriginal(color)
+        self.selectedImage = UIImage(named: imageName)?.renderingOriginal(selectedColor)
+        self.imageInsets = UIEdgeInsets.zero
+        self.title = title
+    }
+    
+    public func setEntity(_ title: String, image: UIImage, selectedImage: UIImage){
+        self.image = image
+        self.selectedImage = selectedImage
+        self.imageInsets = UIEdgeInsets.zero
+        self.title = title
+    }
 }
