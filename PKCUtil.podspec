@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = 'PKCUtil'
-s.version          = '0.8.1'
+s.version          = '1.0.0'
 s.summary          = 'Util made easy to write for each project'
 s.description      = 'I always use copy / paste for each project, so I think it would be more convenient to use library for cocoapods.'
 
@@ -18,7 +18,7 @@ s.author           = { 'pikachu987' => 'pikachu987@naver.com' }
 s.source           = { :git => 'https://github.com/pikachu987/PKCUtil.git', :tag => s.version.to_s }
 
 s.ios.deployment_target = '8.0'
-
+s.swift_version = '4.0'
 s.source_files = 'PKCUtil/Classes/**/*'
 
 end
