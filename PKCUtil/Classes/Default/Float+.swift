@@ -19,6 +19,7 @@
 //THE SOFTWARE.
 
 import Foundation
+import UIKit
 
 public extension Float{
     // MARK: property
