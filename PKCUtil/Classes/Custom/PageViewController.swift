@@ -28,7 +28,7 @@ public protocol PageViewControllerDelegate: class {
     func pageViewController(_ pageViewController: UIPageViewController, index: Int)
 }
 
-extension PageViewControllerDelegate {
+public extension PageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, count: Int){ }
     func pageViewController(_ pageViewController: UIPageViewController, index: Int){ }
 }
