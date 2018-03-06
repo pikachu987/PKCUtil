@@ -92,12 +92,12 @@ public extension UIImage {
     /**
      resize
      - parameter size: CGSize
+     - parameter scale: CGFloat
+     - parameter hasAlpha: Bool
      - returns: UIImage?
      */
-    public func resize(_ size: CGSize) -> UIImage?{
-        let hasAlpha = true
-        let scale: CGFloat = 0.0
-        UIGraphicsBeginImageContextWithOptions(size, !hasAlpha, scale)
+    public func resize(_ size: CGSize, scale: CGFloat = 1, hasAlpha: Bool = false) -> UIImage?{
+        UIGraphicsBeginImageContextWithOptions(size, hasAlpha, scale)
         self.draw(in: CGRect(origin: CGPoint.zero, size: size))
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         return scaledImage
