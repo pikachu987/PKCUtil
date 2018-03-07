@@ -111,7 +111,19 @@ public extension UIImage {
      - parameter percentage: CGFloat
      - returns: UIImage?
      */
-    public func rePercentage(_ percentage: CGFloat) -> UIImage? {
+    public func rePercentage(_ percentage: CGFloat) -> UIImage {
+        guard let data = UIImageJPEGRepresentation(self, percentage) else { return UIImage() }
+        return UIImage(data: data) ?? UIImage()
+    }
+    
+    
+    
+    /**
+     percentage PNG
+     - parameter percentage: CGFloat
+     - returns: UIImage?
+     */
+    public func rePercentagePNG(_ percentage: CGFloat) -> UIImage? {
         let canvasSize = CGSize(width: size.width * percentage, height: size.height * percentage)
         UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
         defer { UIGraphicsEndImageContext() }
