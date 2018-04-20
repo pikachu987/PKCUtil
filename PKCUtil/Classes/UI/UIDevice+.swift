@@ -50,7 +50,7 @@ public extension UIDevice {
      - returns: String
      */
     public func modelName(machineString: String) -> String{
-        #if (arch(i386) || arch(x86_64)) && os(iOS)
+        #if targetEnvironment(simulator)
             if let dir = ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] {
                 return self.getMachineString(dir)
             }else{
@@ -67,7 +67,7 @@ public extension UIDevice {
      - returns: UIDeviceModelType
      */
     public func modelNameType(machineString: String) -> UIDeviceModelType{
-        #if (arch(i386) || arch(x86_64)) && os(iOS)
+        #if targetEnvironment(simulator)
             if let dir = ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] {
                 return self.getModelType(dir)
             }else{
