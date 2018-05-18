@@ -58,6 +58,7 @@ public class AppStore: NSObject {
         let bundleIdentifierValue = identifier ?? Bundle.main.bundleIdentifier
         // appStore server
         guard let bundleIdentifier = bundleIdentifierValue, let url = NSURL(string: "http://itunes.apple.com/lookup?bundleId=\(bundleIdentifier)") else{
+            handler(AppVersion(url: "", currentVersion: currentVer, storeVersion: currentVer, isUpdate: false))
             return
         }
         
@@ -68,14 +69,16 @@ public class AppStore: NSObject {
         var updateType: UpdateType = .none
         let task = URLSession.shared.dataTask(with: url as URL) {(data, response, error) in
             do{
-                guard let json = data, let dict = try JSONSerialization.jsonObject(with: json, options: JSONSerialization.ReadingOptions.allowFragments) as? NSDictionary else{
-                    return
+                guard
+                    let json = data,
+                    let dict = try JSONSerialization.jsonObject(with: json, options: JSONSerialization.ReadingOptions.allowFragments) as? NSDictionary,
+                    let results :NSArray = dict["results"] as? NSArray, results.count != 0,
+                    let dic = results[0] as? NSDictionary,
+                    let trackViewUrl = dic["trackViewUrl"] as? String,
+                    let version = dic["version"] as? String else{
+                        handler(AppVersion(url: "", currentVersion: currentVer, storeVersion: currentVer, isUpdate: false))
+                        return
                 }
-                guard let results :NSArray = dict["results"] as? NSArray, results.count != 0 else{ return }
-                guard let dic = results[0] as? NSDictionary else{ return }
-                
-                guard let trackViewUrl = dic["trackViewUrl"] as? String else{ return }
-                guard let version = dic["version"] as? String else{ return }
                 
                 let currentVersion = currentVer
                 
