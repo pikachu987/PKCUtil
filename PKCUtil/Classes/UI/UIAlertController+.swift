@@ -22,6 +22,19 @@ import UIKit
 
 public extension UIAlertController{
     
+    // MARK: var
+    
+    /**
+     contentViewController - textView
+     - returns: UITextView?
+     */
+    public var textView: UITextView?{
+        guard let contentViewController = self.value(forKey: "contentViewController") as? UIViewController else{ return nil }
+        if contentViewController.view == nil { return nil }
+        guard let textView = contentViewController.view.subviews.compactMap({ $0 as? UITextView }).first else{ return nil }
+        return textView
+    }
+    
     // MARK: func
     
     /**
@@ -220,6 +233,33 @@ public extension UIAlertController{
     }
     
     
+    
+    /**
+     Make TextView
+     - parameter handler: ((UITextView) -> Void)?
+     - returns: UIAlertController
+     */
+    @discardableResult
+    public func appendTextView(_ handler: ((UITextView) -> Void)? = nil) -> UIAlertController{
+        let textViewController = UIViewController()
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        let textView = UITextView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.layer.borderColor = UIColor(white: 210/255, alpha: 1).cgColor
+        textView.layer.borderWidth = 1
+        handler?(textView)
+        view.addSubview(textView)
+        
+        let view_constraint_H = NSLayoutConstraint.constraints(withVisualFormat: "H:|-6-[view]-6-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": textView])
+        let view_constraint_V = NSLayoutConstraint.constraints(withVisualFormat: "V:|-6-[view]-6-|", options: NSLayoutFormatOptions.alignAllLeading, metrics: nil, views: ["view": textView])
+        view.addConstraints(view_constraint_H)
+        view.addConstraints(view_constraint_V)
+        textViewController.view = view
+        textViewController.preferredContentSize.height = 100
+        self.setValue(textViewController, forKey: "contentViewController")
+        
+        return self
+    }
     
     
     
