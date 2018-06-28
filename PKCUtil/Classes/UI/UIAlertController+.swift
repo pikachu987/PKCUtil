@@ -174,8 +174,8 @@ public extension UIAlertController{
      - returns: UIAlertController
      */
     private func action(_ title: String?, style: UIAlertActionStyle, handler: ((UIAlertController) -> Void)? = nil) -> UIAlertController{
-        self.addAction(UIAlertAction(title: title, style: style, handler: { (_) in
-            handler?(self)
+        self.addAction(UIAlertAction(title: title, style: style, handler: { [weak self] (_) in
+            handler?(self ?? UIAlertController())
         }))
         return self
     }
@@ -270,9 +270,9 @@ public extension UIAlertController{
      - returns: UIAlertController
      */
     @discardableResult
-    public func show(_ viewController: UIViewController) -> UIAlertController{
+    public func show(_ viewController: UIViewController?) -> UIAlertController{
         DispatchQueue.main.async {
-            viewController.present(self, animated: true, completion: nil)
+            viewController?.present(self, animated: true, completion: nil)
         }
         return self
     }
