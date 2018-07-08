@@ -80,12 +80,12 @@ public class PageViewController: UIPageViewController{
     }
     
     /// scroll To Index
-    public func scrollToViewController(_ index: Int) {
+    public func scrollToViewController(_ index: Int, isNotify: Bool = true) {
         if let firstViewController = viewControllers?.first,
             let currentIndex = orderedViewControllers.index(of: firstViewController) {
             let direction: UIPageViewControllerNavigationDirection = index >= currentIndex ? .forward : .reverse
             let nextViewController = orderedViewControllers[index]
-            scrollToViewController(nextViewController, direction: direction)
+            scrollToViewController(nextViewController, direction: direction, isNotify: isNotify)
         }
     }
     
@@ -95,17 +95,19 @@ public class PageViewController: UIPageViewController{
     }
     
     /// Scroll To ViewController
-    private func scrollToViewController(_ viewController: UIViewController, direction: UIPageViewControllerNavigationDirection = .forward) {
+    private func scrollToViewController(_ viewController: UIViewController, direction: UIPageViewControllerNavigationDirection = .forward, isNotify: Bool = true) {
         setViewControllers([viewController],direction: direction,animated: true,completion: { (finished) -> Void in
-            self.notifyDelegateOfNewIndex()
+            self.notifyDelegateOfNewIndex(isNotify)
         })
     }
     
     /// Notify NewIndex
-    private func notifyDelegateOfNewIndex() {
+    private func notifyDelegateOfNewIndex(_ isNotify: Bool = true) {
         if let firstViewController = viewControllers?.first,
             let index = orderedViewControllers.index(of: firstViewController) {
-            self.pageViewDelegate?.pageViewController(self, index: index)
+            if isNotify {
+                self.pageViewDelegate?.pageViewController(self, index: index)
+            }
         }
     }
     
