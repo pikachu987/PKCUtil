@@ -294,63 +294,20 @@ public extension Date{
     
     /**
      Make data in a format
-     - parameter date: String?
-     - parameter foramt: String
-     - parameter timeZone: String
+     - parameter date: String
+     - parameter format: String
+     - parameter timeZone: TimeZone = TimeZone.current
+     - parameter locale: Locale = Locale.current
      - returns: Date?
      */
-    public static func format(_ date: String?, foramt: String, timeZone: String = "GMT+0:00") -> Date?{
+    public static func format(_ date: String, format: String, timeZone: TimeZone = TimeZone.current, locale: Locale = Locale.current) -> Date?{
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = foramt
-        dateFormatter.timeZone = TimeZone(abbreviation: timeZone)
-        return dateFormatter.date(from: date ?? "")
-    }
-    
-    /**
-     Make data in a format
-     - parameter date: String?
-     - parameter foramt: String
-     - parameter timeZone: TimeZone
-     - returns: Date?
-     */
-    public static func format(_ date: String?, foramt: String, timeZone: TimeZone) -> Date?{
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = foramt
-        dateFormatter.timeZone = timeZone
-        return dateFormatter.date(from: date ?? "")
-    }
-    
-    /**
-     Make data in a format
-     - parameter date: String?
-     - parameter foramt: String
-     - parameter timeZone: String
-     - parameter locale: Locale?
-     - returns: Date?
-     */
-    public static func format(_ date: String?, foramt: String, timeZone: String = "GMT+0:00", locale: Locale?) -> Date?{
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = foramt
-        dateFormatter.timeZone = TimeZone(abbreviation: timeZone)
-        dateFormatter.locale = locale
-        return dateFormatter.date(from: date ?? "")
-    }
-    
-    /**
-     Make data in a format
-     - parameter date: String?
-     - parameter foramt: String
-     - parameter timeZone: TimeZone
-     - parameter locale: Locale?
-     - returns: Date?
-     */
-    public static func format(_ date: String?, foramt: String, timeZone: TimeZone, locale: Locale?) -> Date?{
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = foramt
+        dateFormatter.dateFormat = format
         dateFormatter.timeZone = timeZone
         dateFormatter.locale = locale
-        return dateFormatter.date(from: date ?? "")
+        return dateFormatter.date(from: date)
     }
+    
     
     
 }
