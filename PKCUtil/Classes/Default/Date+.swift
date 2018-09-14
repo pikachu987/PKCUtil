@@ -300,11 +300,11 @@ public extension Date{
      - parameter locale: Locale = Locale.current
      - returns: Date?
      */
-    public static func format(_ date: String, format: String, timeZone: TimeZone = TimeZone.current, locale: Locale = Locale.current) -> Date?{
+    public static func format(_ date: String, format: String, timeZone: TimeZone = TimeZone.current, locale: NSLocale = NSLocale(localeIdentifier: Locale.current.identifier)) -> Date?{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
         dateFormatter.timeZone = timeZone
-        dateFormatter.locale = locale
+        dateFormatter.locale = locale as Locale
         return dateFormatter.date(from: date)
     }
     
